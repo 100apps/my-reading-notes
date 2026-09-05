@@ -1,0 +1,219 @@
+{
+  "policy": "受版权保护的本地原文件不进入公开仓库；本清单用于版本追踪和完整性校验。",
+  "generated_at": "2026-09-05",
+  "source_repository": "https://github.com/0voice/expert_readed_books",
+  "files": [
+    {
+      "slug": "code-hidden-language",
+      "local_filename": "编码 隐匿在计算机软硬件背后的语言.pdf",
+      "format": "pdf",
+      "bytes": 16644481,
+      "pages": 439,
+      "sha256": "43df42135fbfd3496baeb401ad608f62e92e86e247c03c16809e0c20701afd96",
+      "redistributable": false,
+      "public_reference": "https://www.microsoftpressstore.com/store/code-the-hidden-language-of-computer-ha-9780137909100"
+    },
+    {
+      "slug": "csapp",
+      "local_filename": "深入理解计算机系统(中文版).pdf",
+      "format": "pdf",
+      "bytes": 22060589,
+      "pages": 1616,
+      "sha256": "9ba30114c43e7a7b65ee36543d56e403ab412e95da181627279980e44a94810a",
+      "redistributable": false,
+      "public_reference": "https://csapp.cs.cmu.edu/"
+    },
+    {
+      "slug": "sicp",
+      "local_filename": "计算机程序的构造和解释 pdf 中文版.pdf",
+      "format": "pdf",
+      "bytes": 13632253,
+      "pages": 492,
+      "sha256": "c9d6678dee5ec6628439d01909e48915d81484cecc7936cfd2ec32df8114f1a5",
+      "redistributable": false,
+      "integrity_note": "该中文扫描文件未核验再分发许可；MIT Press 提供另一个有明确开放许可的官方版本。",
+      "public_reference": "https://mitpress.mit.edu/9780262510875/structure-and-interpretation-of-computer-programs/"
+    },
+    {
+      "slug": "modern-operating-systems",
+      "local_filename": "现代操作系统第三版高清.pdf",
+      "format": "pdf",
+      "bytes": 88609258,
+      "pages": 606,
+      "sha256": "12875c2f50f8a44f879ebc7d4d96542de510192deff43292d64bd60ddc0a9b2a",
+      "redistributable": false,
+      "public_reference": "https://www.pearson.com/en-ca/subject-catalog/p/modern-operating-systems/P200000003295/9780137618873"
+    },
+    {
+      "slug": "tcp-ip-illustrated",
+      "local_filename": "TCP-IP详解卷1：协议 - W.Richard Stevens - 机械工业出版社.pdf",
+      "format": "pdf",
+      "bytes": 19132008,
+      "pages": 426,
+      "sha256": "b16fadbf642b36f08d4b0bc4be0b448d25166079ad764ae1716c424ea4d4f20c",
+      "redistributable": false,
+      "public_reference": "https://www.informit.com/store/tcp-ip-illustrated-volume-1-the-protocols-9780201633467"
+    },
+    {
+      "slug": "art-of-unix-programming",
+      "local_filename": "UNIX编程艺术.pdf",
+      "format": "pdf",
+      "bytes": 43725711,
+      "pages": 544,
+      "sha256": "5ef70814d875b85822cbd346f932fdd45bcad9540eb32cbdbe872c22c84629ad",
+      "redistributable": false,
+      "integrity_note": "中文扫描文件不公开；作者英文在线版具有明确 CC BY-ND 许可。",
+      "public_reference": "https://catb.org/~esr/writings/taoup/html/index.html"
+    },
+    {
+      "slug": "introduction-to-algorithms",
+      "local_filename": "算法导论(原书第3版).pdf",
+      "format": "pdf",
+      "bytes": 48819737,
+      "pages": 67,
+      "sha256": "ddd01bc146deab910a340e609bfb16d86c7464f5b2e7d1f10ee97ee9902771e5",
+      "redistributable": false,
+      "integrity_note": "只有 67 个大幅扫描页，文件完整性与版面结构待核验。",
+      "public_reference": "https://mitpress.mit.edu/9780262046305/introduction-to-algorithms/"
+    },
+    {
+      "slug": "code-complete",
+      "local_filename": "代码大全.pdf",
+      "format": "pdf",
+      "bytes": 9629813,
+      "pages": 542,
+      "sha256": "4e530214f4af4975bb52e5887fd92cf28efb30f969e79722839b5b26ee262cc2",
+      "redistributable": false,
+      "integrity_note": "具体版次待核验。",
+      "public_reference": "https://www.microsoftpressstore.com/store/browse/software-engineering?page=2"
+    },
+    {
+      "slug": "refactoring",
+      "local_filename": "重构_改善既有代码的设计.pdf",
+      "format": "pdf",
+      "bytes": 32514679,
+      "pages": 446,
+      "sha256": "96ab6e57de509e25a472c8190562e45b44dc5b0bd01810c5ca489b4de999c600",
+      "redistributable": false,
+      "public_reference": "https://martinfowler.com/books/refactoring.html"
+    },
+    {
+      "slug": "clean-code",
+      "local_filename": "代码整洁之道 中文完整版-带书签.pdf",
+      "format": "pdf",
+      "bytes": 15761160,
+      "pages": 404,
+      "sha256": "c64c762be6e13ebf55913b476dace0c8e7f4f2d542d4da517b3fe956818193e9",
+      "redistributable": false,
+      "public_reference": "https://www.informit.com/articles/article.aspx?p=1235624"
+    },
+    {
+      "slug": "working-effectively-with-legacy-code",
+      "local_filename": "修改代码的艺术(中文pdf版).pdf",
+      "format": "pdf",
+      "bytes": 11556873,
+      "pages": 360,
+      "sha256": "e575670cd0c80250527b87b585cefcac5335ca827a44d4df022099224fa2000e",
+      "redistributable": false,
+      "public_reference": "https://www.informit.com/articles/article.aspx?p=359417"
+    },
+    {
+      "slug": "mythical-man-month",
+      "local_filename": "人月神话.pdf",
+      "format": "pdf",
+      "bytes": 2664053,
+      "pages": 218,
+      "sha256": "1c9e042cc3bc99eb62db01cb1b6d55ba1f087ae031aac67e0ad62fe1efbc7ef6",
+      "redistributable": false,
+      "public_reference": "https://cs.brown.edu/courses/cs190/2008/documents/mmm/preface20.pdf"
+    },
+    {
+      "slug": "just-enough-software-architecture",
+      "local_filename": "恰如其分的软件架构.风险驱动的设计方法.pdf",
+      "format": "pdf",
+      "bytes": 97580377,
+      "pages": 379,
+      "sha256": "f7d542164573c9f291c8a4dcb77e30709f5b29098c5fe94a0a19c0b127785be9",
+      "redistributable": false,
+      "public_reference": "https://www.georgefairbanks.com/book/"
+    },
+    {
+      "slug": "effective-unit-testing",
+      "local_filename": "有效的单元测试.pdf",
+      "format": "pdf",
+      "bytes": 43863938,
+      "pages": 207,
+      "sha256": "db7b850c4262ee807704d93e0c230bc3bb2ec3e02708f7e041a0146645a0bb87",
+      "redistributable": false,
+      "public_reference": "https://www.manning.com/books/effective-unit-testing"
+    },
+    {
+      "slug": "design-patterns",
+      "local_filename": "设计模式.pdf",
+      "format": "pdf",
+      "bytes": 330011,
+      "pages": 82,
+      "sha256": "ed1f56c1fb37b56086ed9c4f29d7c290a51d5db5cd906acbc951de78638c5947",
+      "redistributable": false,
+      "integrity_note": "文件仅 0.3 MB、82 页，很可能不是完整标准版，需重新获取合法完整版本。",
+      "public_reference": "https://www.pearson.com/en-us/subject-catalog/p/design-patterns-elements-of-reusable-object-oriented-software/P200000009480/9780321700698"
+    },
+    {
+      "slug": "paxos-to-zookeeper",
+      "local_filename": "从PAXOS到ZOOKEEPER分布式一致性原理与实践.pdf",
+      "format": "pdf",
+      "bytes": 82827701,
+      "pages": 433,
+      "sha256": "87065ac2f0664cfa69149afe63b0f8df427a6852c8ef952624cd4b5fa9efb28b",
+      "redistributable": false,
+      "public_reference": "https://www.microsoft.com/en-us/research/publication/paxos-made-simple/"
+    },
+    {
+      "slug": "redis-design-implementation",
+      "local_filename": "redis设计与实现(第二版).pdf",
+      "format": "pdf",
+      "bytes": 13404359,
+      "pages": 392,
+      "sha256": "20c1ad366441dea318cf3dfb95b00e1e387cbd3c6bb15669088cc26ca67ba9f5",
+      "redistributable": false,
+      "public_reference": "https://redisbook.readthedocs.io/en/latest/"
+    },
+    {
+      "slug": "beauty-of-mathematics",
+      "local_filename": "数学之美.pdf",
+      "format": "pdf",
+      "bytes": 13209620,
+      "pages": 300,
+      "sha256": "6ae296869d4cdf5a5b4d9952f4c62e95b85ccb2a0444ddce3a7a5122c366b27b",
+      "redistributable": false,
+      "public_reference": "https://books.google.com/books/about/%E6%95%B0%E5%AD%A6%E4%B9%8B%E7%BE%8E.html?id=G8gFswEACAAJ"
+    },
+    {
+      "slug": "surely-youre-joking",
+      "local_filename": "别闹了,费曼先生.txt",
+      "format": "txt",
+      "bytes": 259632,
+      "sha256": "6fb37a8a7f42548cdd1838ef675bdd3ebf5492f8eae30b15d082e25d559f23c3",
+      "redistributable": false,
+      "public_reference": "https://wwnorton.com/books/9780393355680"
+    },
+    {
+      "slug": "global-history",
+      "local_filename": "全球通史：从史前史到二十一世纪（上）.epub",
+      "format": "epub",
+      "bytes": 5441297,
+      "sha256": "cd42f468dc7a26bec4126cc0ac88a8785923bcd138538616baf0a94e82028b2d",
+      "redistributable": false,
+      "public_reference": "https://books.google.com/books/about/A_Global_History.html?id=C6g7PQAACAAJ"
+    },
+    {
+      "slug": "global-history",
+      "local_filename": "全球通史：从史前史到二十一世纪（下）.epub",
+      "format": "epub",
+      "bytes": 9802419,
+      "sha256": "4a28d38acf718d3544106f7851cbd9056cec7b8bfbe1e3b932dffc01f5418a0c",
+      "redistributable": false,
+      "public_reference": "https://books.google.com/books/about/A_Global_History.html?id=C6g7PQAACAAJ"
+    }
+  ]
+}

@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="以保持行为的小步变换持续降低修改成本，让设计随理解演进。">
+  <title>《重构：改善既有代码的设计》｜我的读书笔记</title>
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<div id="progress" aria-hidden="true"></div>
+<header class="site-header">
+  <a class="brand" href="../index.html">我的读书笔记</a>
+  <div class="header-actions">
+    <a class="quiet-link" href="../sources.html">来源与版权</a>
+    <a class="quiet-link" href="../index.html#method">关于这套笔记</a>
+    <button class="icon-button" type="button" data-theme-toggle>深浅色</button>
+  </div>
+</header>
+<button class="icon-button menu-button" type="button" data-menu-toggle aria-label="打开目录" aria-expanded="false">目录</button>
+<div class="reader-shell">
+  <aside class="reader-sidebar" aria-label="文档目录">
+    <p class="sidebar-label">Refactoring: Improving the Design of Existing Code</p>
+    <p class="toc-title">阅读目录</p>
+    <nav id="toc"></nav>
+  </aside>
+  <main class="reader-main">
+    <article class="paper"><h1 id="_1">《重构》：用小步变换持续降低修改成本</h1><div class="book-tags">
+  <span class="book-tag">软件工程</span>
+  <span class="book-tag">结构化初读</span>
+  <span class="book-tag">阅读状态：待读</span>
+</div>
+<p class="book-summary">以保持行为的小步变换持续降低修改成本，让设计随理解演进。</p>
+<blockquote>
+<p>笔记状态：结构化初读｜作者：Martin Fowler</p>
+</blockquote>
+<h2 id="_2">版本与阅读范围</h2>
+<p>本地中文版共 446 页，对应第一版的 Java 示例与 15 章结构。报告依据“首个案例—原则—坏味道—测试—重构目录”的论证链整理，并与 2018 年第二版及 Fowler 的在线目录对照。</p>
+<h2 id="_3">一句话结论</h2>
+<p>重构不是一次大型清理，而是在测试和频繁验证保护下，用保持外部行为的小变换持续改善内部结构。</p>
+<h2 id="_4">核心论点一：设计可以在开发过程中演进</h2>
+<p>传统看法把设计放在编码之前，后续修改被视为退化。本书认为，只要改变被分解得足够小且有反馈保护，设计能够随着理解增长而改善。</p>
+<p>论证链是：代码变化不可避免 → 结构会积累与当前需求不匹配之处 → 坏结构提高每次修改成本 → 小步重构降低风险 → 更低成本允许持续调整。首章用完整案例展示程序在每一步都可运行，是建设性证明，不只是口号。</p>
+<h2 id="_5">核心论点二：坏味道是调查信号，不是自动判决</h2>
+<p>重复代码、过长函数、过大类、发散式变化、霰弹式修改和数据泥团等名称，提供了团队共享的诊断词汇。味道指出“这里值得看”，具体是否重构仍取决于变化方向、边界和成本。</p>
+<p>如果把味道变成静态规则，会产生新的教条。例如长函数如果保持单一清晰算法，未必比几十个跳转函数更难读；重复也可能只是暂时相似。需要结合修改历史和业务语义判断。</p>
+<h2 id="_6">核心论点三：安全来自短反馈，不来自大胆自信</h2>
+<p>每次只移动、提取、重命名或重组一个小点，然后运行测试。错误发生时，搜索空间被限制在刚才的一步。IDE 自动重构进一步把机械变换变成可验证操作。</p>
+<p>测试不是证明行为绝对不变，但能显著缩小风险。缺少测试时，应先建立最小特征测试或使用编译器、类型系统和静态分析提供反馈，再进行结构改变。</p>
+<h2 id="_7">当代对照与不同观点</h2>
+<ul>
+<li>Fowler 对重构的正式定义仍强调“小的、保持行为的变换”，以及系统在重构过程中持续可工作。<a href="https://martinfowler.com/books/refactoring.html">作者官方页面</a></li>
+<li>第二版改用 JavaScript、减少以类为中心的视角，并更新重构目录。作者认为第一版的方法仍成立，但语言和代码结构已经变化。<a href="https://martinfowler.com/articles/refactoring-2nd-ed.html">第二版说明</a></li>
+<li>反方风险不是“重构无用”，而是无边界清理：没有业务目标的美化会消耗时间；结构性改变与功能改变混在同一大提交，也会让评审和回滚困难。</li>
+</ul>
+<h2 id="_8">适用边界</h2>
+<p>重构适用于外部行为基本确定、内部修改成本需要降低的情形。若要改变业务语义、协议或数据模型，那是功能/迁移设计，不能用“行为不变”掩盖。数据库、分布式协议和公共 API 的重构还需要兼容期与迁移策略。</p>
+<h2 id="_9">读后行动</h2>
+<ol>
+<li>找一个近期反复修改的模块，先写能保护当前行为的测试。</li>
+<li>每次只做一个可命名变换，保持提交可运行。</li>
+<li>比较重构前后的修改路径，而不只比较行数和“好看程度”。</li>
+</ol>
+<h2 id="_10">最终评价</h2>
+<p>这本书把重构从审美意见变成可操作纪律。真正需要掌握的是小步、反馈和经济目标；重构目录更适合作为现场参考，而非背诵表。</p></article>
+  </main>
+</div>
+<footer class="site-footer">
+  <p>个人学习记录 · 明确区分作者主张、证据、外部观点与个人判断。笔记不替代原书。</p>
+</footer>
+<script src="../assets/site.js"></script>
+</body>
+</html>

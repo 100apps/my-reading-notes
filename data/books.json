@@ -1,0 +1,229 @@
+{
+  "site": {
+    "title": "我的读书笔记",
+    "subtitle": "把阅读变成可以检验、讨论和持续修订的思想记录",
+    "description": "书中的论点、论据与论证，放到今天的研究和实践中重新审视。"
+  },
+  "books": [
+    {
+      "slug": "code-hidden-language",
+      "title": "编码：隐匿在计算机软硬件背后的语言",
+      "original_title": "Code: The Hidden Language of Computer Hardware and Software",
+      "author": "Charles Petzold",
+      "category": "计算机基础",
+      "note_status": "结构化初读",
+      "reading_status": "待读",
+      "date": "2026-09-05",
+      "summary": "从编码、继电器和逻辑门逐层搭出一台计算机，理解抽象层如何建立。"
+    },
+    {
+      "slug": "csapp",
+      "title": "深入理解计算机系统",
+      "original_title": "Computer Systems: A Programmer's Perspective",
+      "author": "Randal E. Bryant、David R. O'Hallaron",
+      "category": "计算机基础",
+      "note_status": "结构化初读",
+      "reading_status": "待读",
+      "date": "2026-09-05",
+      "summary": "从程序员视角贯通机器表示、编译链接、存储层次、进程、虚拟内存和并发。"
+    },
+    {
+      "slug": "sicp",
+      "title": "计算机程序的构造和解释",
+      "original_title": "Structure and Interpretation of Computer Programs",
+      "author": "Harold Abelson、Gerald Jay Sussman、Julie Sussman",
+      "category": "计算机基础",
+      "note_status": "结构化初读",
+      "reading_status": "待读",
+      "date": "2026-09-05",
+      "summary": "用抽象、组合、求值模型和解释器训练关于计算过程的思考能力。"
+    },
+    {
+      "slug": "modern-operating-systems",
+      "title": "现代操作系统",
+      "original_title": "Modern Operating Systems",
+      "author": "Andrew S. Tanenbaum、Herbert Bos",
+      "category": "计算机基础",
+      "note_status": "结构化初读",
+      "reading_status": "待读",
+      "date": "2026-09-05",
+      "summary": "以资源管理和扩展机器两种视角组织进程、内存、文件、I/O、安全与虚拟化。"
+    },
+    {
+      "slug": "tcp-ip-illustrated",
+      "title": "TCP/IP 详解 卷1：协议",
+      "original_title": "TCP/IP Illustrated, Volume 1: The Protocols",
+      "author": "W. Richard Stevens",
+      "category": "计算机基础",
+      "note_status": "结构化初读",
+      "reading_status": "待读",
+      "date": "2026-09-05",
+      "summary": "通过抓包和实验观察协议真实行为，把网络规范转化为可验证的运行机制。"
+    },
+    {
+      "slug": "art-of-unix-programming",
+      "title": "UNIX 编程艺术",
+      "original_title": "The Art of Unix Programming",
+      "author": "Eric S. Raymond",
+      "category": "计算机基础",
+      "note_status": "结构化初读",
+      "reading_status": "待读",
+      "date": "2026-09-05",
+      "summary": "以模块化、文本流、组合和透明性解释 Unix 软件文化的长期生命力。"
+    },
+    {
+      "slug": "introduction-to-algorithms",
+      "title": "算法导论",
+      "original_title": "Introduction to Algorithms",
+      "author": "Thomas H. Cormen、Charles E. Leiserson、Ronald L. Rivest、Clifford Stein",
+      "category": "计算机基础",
+      "note_status": "结构化初读",
+      "reading_status": "待读",
+      "date": "2026-09-05",
+      "summary": "系统学习算法设计、正确性证明和复杂度分析，而非背诵题型。"
+    },
+    {
+      "slug": "code-complete",
+      "title": "代码大全",
+      "original_title": "Code Complete",
+      "author": "Steve McConnell",
+      "category": "软件工程",
+      "note_status": "结构化初读",
+      "reading_status": "待读",
+      "date": "2026-09-05",
+      "summary": "把软件构建视为可学习的工程活动，用证据和启发式管理代码质量。"
+    },
+    {
+      "slug": "refactoring",
+      "title": "重构：改善既有代码的设计",
+      "original_title": "Refactoring: Improving the Design of Existing Code",
+      "author": "Martin Fowler",
+      "category": "软件工程",
+      "note_status": "结构化初读",
+      "reading_status": "待读",
+      "date": "2026-09-05",
+      "summary": "以保持行为的小步变换持续降低修改成本，让设计随理解演进。"
+    },
+    {
+      "slug": "clean-code",
+      "title": "代码整洁之道",
+      "original_title": "Clean Code",
+      "author": "Robert C. Martin",
+      "category": "软件工程",
+      "note_status": "结构化初读",
+      "reading_status": "待读",
+      "date": "2026-09-05",
+      "summary": "强调代码首先是写给人读的，同时警惕把个人风格偏好绝对化。"
+    },
+    {
+      "slug": "working-effectively-with-legacy-code",
+      "title": "修改代码的艺术",
+      "original_title": "Working Effectively with Legacy Code",
+      "author": "Michael Feathers",
+      "category": "软件工程",
+      "note_status": "结构化初读",
+      "reading_status": "待读",
+      "date": "2026-09-05",
+      "summary": "先用特征测试和接缝建立安全边界，再改变缺乏测试的遗留代码。"
+    },
+    {
+      "slug": "mythical-man-month",
+      "title": "人月神话",
+      "original_title": "The Mythical Man-Month",
+      "author": "Frederick P. Brooks Jr.",
+      "category": "软件工程",
+      "note_status": "结构化初读",
+      "reading_status": "待读",
+      "date": "2026-09-05",
+      "summary": "软件进度不是人数的线性函数，沟通、概念一致性和不可约复杂性决定上限。"
+    },
+    {
+      "slug": "just-enough-software-architecture",
+      "title": "恰如其分的软件架构",
+      "original_title": "Just Enough Software Architecture",
+      "author": "George Fairbanks",
+      "category": "软件工程",
+      "note_status": "结构化初读",
+      "reading_status": "待读",
+      "date": "2026-09-05",
+      "summary": "用风险决定架构工作的深度，让建模和预先设计服务于具体风险。"
+    },
+    {
+      "slug": "effective-unit-testing",
+      "title": "有效的单元测试",
+      "original_title": "Effective Unit Testing",
+      "author": "Lasse Koskela",
+      "category": "软件工程",
+      "note_status": "深度报告",
+      "reading_status": "共读完成",
+      "date": "2026-09-04",
+      "summary": "测试代码也会产生技术债；反馈质量比测试数量和覆盖率更重要。"
+    },
+    {
+      "slug": "design-patterns",
+      "title": "设计模式",
+      "original_title": "Design Patterns: Elements of Reusable Object-Oriented Software",
+      "author": "Erich Gamma、Richard Helm、Ralph Johnson、John Vlissides",
+      "category": "软件工程",
+      "note_status": "结构化初读",
+      "reading_status": "待读",
+      "date": "2026-09-05",
+      "summary": "把反复出现的设计结构命名为共享语言；模式是诊断词汇，不是套用模板。"
+    },
+    {
+      "slug": "paxos-to-zookeeper",
+      "title": "从 PAXOS 到 ZOOKEEPER",
+      "original_title": "分布式一致性原理与实践",
+      "author": "倪超",
+      "category": "后端与分布式",
+      "note_status": "结构化初读",
+      "reading_status": "待读",
+      "date": "2026-09-05",
+      "summary": "从一致性问题、Paxos 和 Zab 进入 ZooKeeper 的工程实现与使用边界。"
+    },
+    {
+      "slug": "redis-design-implementation",
+      "title": "Redis 设计与实现",
+      "original_title": "Redis 设计与实现（第二版）",
+      "author": "黄健宏",
+      "category": "后端与分布式",
+      "note_status": "结构化初读",
+      "reading_status": "待读",
+      "date": "2026-09-05",
+      "summary": "从数据结构、数据库、持久化、复制和集群机制理解 Redis 的实现取舍。"
+    },
+    {
+      "slug": "beauty-of-mathematics",
+      "title": "数学之美",
+      "original_title": "数学之美",
+      "author": "吴军",
+      "category": "拓宽视野",
+      "note_status": "结构化初读",
+      "reading_status": "待读",
+      "date": "2026-09-05",
+      "summary": "用信息论、概率统计和线性代数解释搜索与自然语言处理中的工程模型。"
+    },
+    {
+      "slug": "surely-youre-joking",
+      "title": "别闹了，费曼先生",
+      "original_title": "Surely You're Joking, Mr. Feynman!",
+      "author": "Richard P. Feynman、Ralph Leighton",
+      "category": "拓宽视野",
+      "note_status": "结构化初读",
+      "reading_status": "待读",
+      "date": "2026-09-05",
+      "summary": "用轶事展示好奇、动手验证和不受权威束缚的思维，也需要辨认叙事偏差。"
+    },
+    {
+      "slug": "global-history",
+      "title": "全球通史",
+      "original_title": "A Global History: From Prehistory to the 21st Century",
+      "author": "L. S. Stavrianos",
+      "category": "拓宽视野",
+      "note_status": "结构化初读",
+      "reading_status": "待读",
+      "date": "2026-09-05",
+      "summary": "越过国别史，以跨区域联系、技术、贸易、生态和权力重组观察世界历史。"
+    }
+  ]
+}

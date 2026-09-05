@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="从一致性问题、Paxos 和 Zab 进入 ZooKeeper 的工程实现与使用边界。">
+  <title>《从 PAXOS 到 ZOOKEEPER》｜我的读书笔记</title>
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<div id="progress" aria-hidden="true"></div>
+<header class="site-header">
+  <a class="brand" href="../index.html">我的读书笔记</a>
+  <div class="header-actions">
+    <a class="quiet-link" href="../sources.html">来源与版权</a>
+    <a class="quiet-link" href="../index.html#method">关于这套笔记</a>
+    <button class="icon-button" type="button" data-theme-toggle>深浅色</button>
+  </div>
+</header>
+<button class="icon-button menu-button" type="button" data-menu-toggle aria-label="打开目录" aria-expanded="false">目录</button>
+<div class="reader-shell">
+  <aside class="reader-sidebar" aria-label="文档目录">
+    <p class="sidebar-label">分布式一致性原理与实践</p>
+    <p class="toc-title">阅读目录</p>
+    <nav id="toc"></nav>
+  </aside>
+  <main class="reader-main">
+    <article class="paper"><h1 id="paxos-zookeeper">《从 PAXOS 到 ZOOKEEPER》：一致性从证明到工程</h1><div class="book-tags">
+  <span class="book-tag">后端与分布式</span>
+  <span class="book-tag">结构化初读</span>
+  <span class="book-tag">阅读状态：待读</span>
+</div>
+<p class="book-summary">从一致性问题、Paxos 和 Zab 进入 ZooKeeper 的工程实现与使用边界。</p>
+<blockquote>
+<p>笔记状态：结构化初读｜作者：倪超</p>
+</blockquote>
+<h2 id="_1">版本与阅读范围</h2>
+<p>本地文件共 433 个扫描页，围绕分布式一致性、Paxos、ZooKeeper 数据模型、会话、Zab、服务端/客户端实现与典型应用展开。报告用 Paxos 和 ZooKeeper 原始资料校正概念边界。</p>
+<h2 id="_2">一句话结论</h2>
+<p>分布式协调的难点不只是“节点会坏”，而是在消息延迟、重试、并发和部分失败下，明确哪些安全性质永远不能破坏、哪些活性性质只能在条件满足时保证。</p>
+<h2 id="_3">核心论点一：先区分安全性与活性</h2>
+<p>一致性算法首先要求不会决定两个冲突值，这是安全性；系统最终能继续决定值属于活性。异步网络无法仅凭超时判断节点死亡，因此工程系统常用超时和领导者提高进展，却不能把怀疑等同于事实。</p>
+<p>这是形式化论证的入口：先写不变量，再说明法定人数交集为何保护不变量。Lamport 在《Paxos Made Simple》中指出算法本身可以由 proposer、acceptor 和多数派规则简洁描述。<a href="https://www.microsoft.com/en-us/research/publication/paxos-made-simple/">原始论文页面</a></p>
+<h2 id="_4">核心论点二：多数派交集把一次决定连接到下一次决定</h2>
+<p>任意两个多数派至少共享一个成员。后续提议必须了解更早轮次中可能被选择的值，从而不能覆盖已决定结果。编号轮次解决并发提议者争夺，但领导者、日志复制和成员变更会增加工程复杂度。</p>
+<p>书从 Paxos 过渡到 Zab，强调生产系统不仅需要单值共识，还需要连续事务顺序、崩溃恢复、快照和客户端语义。不能把“实现了多数投票”直接等同于正确共识。</p>
+<h2 id="zookeeper">核心论点三：ZooKeeper 提供协调原语，不是透明一致性魔法</h2>
+<p>临时节点、顺序节点、watch 和版本号可构造选主、锁、配置与成员发现。正确性仍取决于会话过期、一次性 watch、羊群效应和 fencing；客户端断开时无法总能知道操作是否成功。</p>
+<p>ZooKeeper 原始论文把目标描述为高性能协调服务，并通过有序请求和以读为主的工作负载取得吞吐。<a href="https://www.usenix.org/legacy/events/atc10/tech/full_papers/Hunt.pdf">USENIX ZooKeeper 论文</a></p>
+<h2 id="_5">业界对照与不同观点</h2>
+<ul>
+<li>ZooKeeper 官方配方给出锁、屏障、队列和选主，同时明确错误处理和可恢复锁的复杂性。配方是起点，不是自动正确证明。<a href="https://zookeeper.apache.org/doc/current/recipes.html">Apache ZooKeeper Recipes</a></li>
+<li>Raft 以可理解性为设计目标，把选主、日志复制和安全性分解描述；许多团队觉得它比 Paxos 更容易教学和实现，但“更容易理解”不代表可以跳过不变量。<a href="https://raft.github.io/">Raft 官方论文站</a></li>
+<li>分布式锁若用于保护外部资源，还需要 fencing token；仅持有一个可能过期的锁不足以阻止旧客户端写入。</li>
+</ul>
+<h2 id="_6">时效性判断</h2>
+<p>一致性基本原理长期有效；ZooKeeper 版本、源码结构和运维建议会变化。当前工程还应比较 etcd/Raft、云协调服务和数据库自身事务能力，不默认引入独立协调系统。</p>
+<h2 id="_7">读后行动</h2>
+<ol>
+<li>为一个选主协议写出安全不变量和活性前提。</li>
+<li>模拟请求成功但响应丢失，判断客户端能否安全重试。</li>
+<li>设计锁时补上会话过期、fencing 和外部副作用分析。</li>
+</ol>
+<h2 id="_8">最终评价</h2>
+<p>本书适合作为中文工程入口，但不能替代原始论文和故障实验。读懂算法的标准不是复述角色，而是能说明不变量、失败窗口和恢复路径。</p></article>
+  </main>
+</div>
+<footer class="site-footer">
+  <p>个人学习记录 · 明确区分作者主张、证据、外部观点与个人判断。笔记不替代原书。</p>
+</footer>
+<script src="../assets/site.js"></script>
+</body>
+</html>

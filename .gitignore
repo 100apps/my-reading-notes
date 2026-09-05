@@ -1,0 +1,8 @@
+# 受版权保护的原始电子书仅供本地阅读，不进入公开仓库。
+/library/*
+!/library/.gitkeep
+
+# 构建缓存
+__pycache__/
+*.pyc
+.DS_Store

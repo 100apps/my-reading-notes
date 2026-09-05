@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="把软件构建视为可学习的工程活动，用证据和启发式管理代码质量。">
+  <title>《代码大全》｜我的读书笔记</title>
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<div id="progress" aria-hidden="true"></div>
+<header class="site-header">
+  <a class="brand" href="../index.html">我的读书笔记</a>
+  <div class="header-actions">
+    <a class="quiet-link" href="../sources.html">来源与版权</a>
+    <a class="quiet-link" href="../index.html#method">关于这套笔记</a>
+    <button class="icon-button" type="button" data-theme-toggle>深浅色</button>
+  </div>
+</header>
+<button class="icon-button menu-button" type="button" data-menu-toggle aria-label="打开目录" aria-expanded="false">目录</button>
+<div class="reader-shell">
+  <aside class="reader-sidebar" aria-label="文档目录">
+    <p class="sidebar-label">Code Complete</p>
+    <p class="toc-title">阅读目录</p>
+    <nav id="toc"></nav>
+  </aside>
+  <main class="reader-main">
+    <article class="paper"><h1 id="_1">《代码大全》：软件构建是一门可学习的工程</h1><div class="book-tags">
+  <span class="book-tag">软件工程</span>
+  <span class="book-tag">结构化初读</span>
+  <span class="book-tag">阅读状态：待读</span>
+</div>
+<p class="book-summary">把软件构建视为可学习的工程活动，用证据和启发式管理代码质量。</p>
+<blockquote>
+<p>笔记状态：结构化初读｜作者：Steve McConnell</p>
+</blockquote>
+<h2 id="_2">版本与阅读范围</h2>
+<p>本地 PDF 共 542 页，目录覆盖构建前提、设计、子程序、数据、控制、质量、调试、测试、性能和项目实践，版本信息仍需在精读时核准。报告把书中的具体规则视为启发式，并与现代代码评审和自动化实践对照。</p>
+<h2 id="_3">一句话结论</h2>
+<p>高质量代码不是靠少数天才的直觉产生，而是依靠准备、设计、命名、局部复杂度控制、评审、测试和持续改进形成。</p>
+<h2 id="_4">核心论点一：编码之前的前提决定编码成本</h2>
+<p>清楚的问题定义、需求和架构能减少下游返工。作者反对把“开始敲代码”误当作进展，使用建筑隐喻说明基础不稳会放大后续成本。</p>
+<p>论证来自项目经验、研究引用和成本机制：越晚发现概念错误，涉及的代码、测试、文档和协作者越多，修改范围越大。但预先工作也存在边际收益；不确定性高的产品不能等待完美需求，应通过原型和短反馈验证假设。</p>
+<h2 id="_5">核心论点二：管理复杂度是软件构建的中心任务</h2>
+<p>好名字、小而内聚的子程序、有限作用域、清晰控制流和恰当数据结构，都在减少一次需要放进脑中的状态。抽象的价值是让人暂时忽略不相关细节。</p>
+<p>这是一条认知成本论证：局部理解所需上下文越少，修改越安全。具体的“函数多少行”等阈值不能脱离语言和领域照搬；真正应观察的是职责、分支、耦合和读者能否建立准确模型。</p>
+<h2 id="_6">核心论点三：质量必须内建在构建循环中</h2>
+<p>桌面检查、同行评审、单元测试、调试和重构不是最后阶段的补救，而是持续反馈渠道。不同手段发现不同种类的问题，组合通常优于只依赖测试或只依赖流程。</p>
+<p>论证的弱点是许多量化引用来自更早的软件环境；结论方向仍可信，但具体比例不应当作当前团队的预测。最好的验证方式是收集自己的缺陷来源、评审效果和交付周期数据。</p>
+<h2 id="_7">当代业界对照</h2>
+<ul>
+<li>第二版于 2004 年出版，范围仍覆盖软件构建的完整生命周期。<a href="https://www.microsoftpressstore.com/store/browse/software-engineering?page=2">Microsoft Press 书目页</a></li>
+<li>Google 的代码评审指南同样把可维护性、测试、复杂度、命名、注释和一致性作为评审对象，并建议小而自洽的变更；这与本书的局部复杂度控制一致。<a href="https://google.github.io/eng-practices/review/reviewer/looking-for.html">Google Engineering Practices</a></li>
+<li>现代工具已经自动化格式、静态分析、重构和 CI。工具降低执行成本，却没有替代问题分解、命名和设计判断。</li>
+</ul>
+<h2 id="_8">适用边界</h2>
+<p>书中有些风格规则带有过程式和早期面向对象语言背景。应把每条规则转写成它保护的目标，例如可读性、局部性、错误可见性，再决定在当前语言中怎样实现。</p>
+<h2 id="_9">读后行动</h2>
+<ol>
+<li>从项目中选一个高修改频率模块，记录它的认知负担来源。</li>
+<li>把团队检查清单限制在最常见且代价最高的十类问题。</li>
+<li>用一个月的缺陷数据检验哪些实践真正有效。</li>
+</ol>
+<h2 id="_10">最终评价</h2>
+<p>它最大的价值是给“写代码”建立完整工程地图。不要背诵数百条建议；应建立自己的证据化检查表，并随着项目反馈删除、修改和补充规则。</p></article>
+  </main>
+</div>
+<footer class="site-footer">
+  <p>个人学习记录 · 明确区分作者主张、证据、外部观点与个人判断。笔记不替代原书。</p>
+</footer>
+<script src="../assets/site.js"></script>
+</body>
+</html>

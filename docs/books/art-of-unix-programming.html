@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="以模块化、文本流、组合和透明性解释 Unix 软件文化的长期生命力。">
+  <title>《UNIX 编程艺术》｜我的读书笔记</title>
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<div id="progress" aria-hidden="true"></div>
+<header class="site-header">
+  <a class="brand" href="../index.html">我的读书笔记</a>
+  <div class="header-actions">
+    <a class="quiet-link" href="../sources.html">来源与版权</a>
+    <a class="quiet-link" href="../index.html#method">关于这套笔记</a>
+    <button class="icon-button" type="button" data-theme-toggle>深浅色</button>
+  </div>
+</header>
+<button class="icon-button menu-button" type="button" data-menu-toggle aria-label="打开目录" aria-expanded="false">目录</button>
+<div class="reader-shell">
+  <aside class="reader-sidebar" aria-label="文档目录">
+    <p class="sidebar-label">The Art of Unix Programming</p>
+    <p class="toc-title">阅读目录</p>
+    <nav id="toc"></nav>
+  </aside>
+  <main class="reader-main">
+    <article class="paper"><h1 id="unix">《UNIX 编程艺术》：可组合系统的文化与边界</h1><div class="book-tags">
+  <span class="book-tag">计算机基础</span>
+  <span class="book-tag">结构化初读</span>
+  <span class="book-tag">阅读状态：待读</span>
+</div>
+<p class="book-summary">以模块化、文本流、组合和透明性解释 Unix 软件文化的长期生命力。</p>
+<blockquote>
+<p>笔记状态：结构化初读｜作者：Eric S. Raymond</p>
+</blockquote>
+<h2 id="_1">版本与阅读范围</h2>
+<p>本地版本共 544 页，覆盖 Unix 历史、模块化、文本协议、透明性、多进程、接口、语言、工具和开源文化。作者提供的在线全文采用 CC BY-ND 1.0 附加条款，可作为版本和引用依据。<a href="https://catb.org/~esr/writings/taoup/html/index.html">官方在线全文</a></p>
+<h2 id="_2">一句话结论</h2>
+<p>Unix 的长期优势不在某个系统调用，而在一组可组合的设计偏好：小工具、清晰接口、文本流、机制与策略分离，以及可被自动化的透明行为。</p>
+<h2 id="_3">核心论点一：组合通常比巨型一体化程序更有生命力</h2>
+<p>作者倡导程序只做好一件事，并通过稳定接口连接。小组件更容易理解、替换和复用；管道让原作者没有预见的组合成为可能。</p>
+<p>论证主要来自 Unix 工具和历史案例，是经验归纳而非严格定理。组合的收益依赖接口稳定、数据可交换和失败可诊断；如果跨进程序列化、延迟或一致性成本很高，拆分也可能适得其反。</p>
+<h2 id="_4">核心论点二：文本接口提升透明性和可操纵性</h2>
+<p>人可读、可用通用工具处理的数据降低调试门槛，也便于脚本化。配置文件、日志和行式协议因此成为 Unix 文化的重要媒介。</p>
+<p>推理链是：开放表示 → 可直接检查 → 可用现成工具转换 → 更低的组合成本。但文本不是无条件优越：大规模数据、强类型契约、随机访问和高吞吐场景可能更适合二进制格式。真正原则是可检查、文档化、可演进，而非所有数据必须是文本。</p>
+<h2 id="_5">核心论点三：机制与策略分离能延长软件寿命</h2>
+<p>机制提供能力，策略决定具体选择。把两者混在一起会让需求变化迫使底层重写；通过配置、插件或不同前端分离，核心机制更稳定。</p>
+<p>这一主张与现代平台的控制平面/数据平面、无头服务与 CLI/API 分离相呼应。但过度通用的机制会产生复杂配置语言，所以仍需基于真实变化设计扩展点。</p>
+<h2 id="_6">业界对照与反思</h2>
+<ul>
+<li>POSIX 持续把 shell、工具和系统接口标准化，2024 年发布的 Issue 8 说明可组合命令环境仍然活跃，而不是历史遗物。<a href="https://pubs.opengroup.org/onlinepubs/9799919799/">The Open Group POSIX.1-2024</a></li>
+<li>微服务常被描述为“小而自治”的 Unix 式组合，但网络调用比管道昂贵且会部分失败。把函数拆成服务不是自动获得 Unix 哲学，反而需要可观测性、超时、重试和版本治理。</li>
+<li>GUI、数据库和大型 IDE 很难被压缩成单一文本流；书中的偏好应作为设计问题的提问方式，而不是审美法庭。</li>
+</ul>
+<h2 id="_7">时效性判断</h2>
+<p>具体语言比较、硬件约束和 2003 年的生态判断已经老化；模块化、透明性、可组合性和自动化接口依然有效。作者对 Unix 文化带有鲜明立场，案例选择存在幸存者偏差。</p>
+<h2 id="_8">读后行动</h2>
+<ol>
+<li>选一个内部工具，检查它能否从标准输入读取并向标准输出写结果。</li>
+<li>把业务策略从不可复用机制中拆出，但只为已经出现的变化点设计接口。</li>
+<li>为机器接口同时提供稳定格式、错误码和可观察日志。</li>
+</ol>
+<h2 id="_9">最终评价</h2>
+<p>它最适合当作设计原则辩论集。值得学习的是可组合性的经济学，不是把所有问题都写成 shell 管道。</p></article>
+  </main>
+</div>
+<footer class="site-footer">
+  <p>个人学习记录 · 明确区分作者主张、证据、外部观点与个人判断。笔记不替代原书。</p>
+</footer>
+<script src="../assets/site.js"></script>
+</body>
+</html>

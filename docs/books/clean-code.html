@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="强调代码首先是写给人读的，同时警惕把个人风格偏好绝对化。">
+  <title>《代码整洁之道》｜我的读书笔记</title>
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<div id="progress" aria-hidden="true"></div>
+<header class="site-header">
+  <a class="brand" href="../index.html">我的读书笔记</a>
+  <div class="header-actions">
+    <a class="quiet-link" href="../sources.html">来源与版权</a>
+    <a class="quiet-link" href="../index.html#method">关于这套笔记</a>
+    <button class="icon-button" type="button" data-theme-toggle>深浅色</button>
+  </div>
+</header>
+<button class="icon-button menu-button" type="button" data-menu-toggle aria-label="打开目录" aria-expanded="false">目录</button>
+<div class="reader-shell">
+  <aside class="reader-sidebar" aria-label="文档目录">
+    <p class="sidebar-label">Clean Code</p>
+    <p class="toc-title">阅读目录</p>
+    <nav id="toc"></nav>
+  </aside>
+  <main class="reader-main">
+    <article class="paper"><h1 id="_1">《代码整洁之道》：有价值的原则与需要警惕的教条</h1><div class="book-tags">
+  <span class="book-tag">软件工程</span>
+  <span class="book-tag">结构化初读</span>
+  <span class="book-tag">阅读状态：待读</span>
+</div>
+<p class="book-summary">强调代码首先是写给人读的，同时警惕把个人风格偏好绝对化。</p>
+<blockquote>
+<p>笔记状态：结构化初读｜作者：Robert C. Martin</p>
+</blockquote>
+<h2 id="_2">版本与阅读范围</h2>
+<p>本地中文版共 404 个扫描页，包含命名、函数、注释、格式、对象与数据结构、错误处理、边界、测试、类、系统、并发及案例重构。报告区分可迁移原则与作者个人风格偏好。</p>
+<h2 id="_3">一句话结论</h2>
+<p>代码首先是团队之间传递意图的媒介；清晰、局部和可验证很重要，但“整洁”必须由上下文、语言和修改效果检验，不能靠统一审美定义。</p>
+<h2 id="_4">核心论点一：混乱代码会持续收取利息</h2>
+<p>含糊命名、重复、隐藏副作用和纠缠职责让每次修改都需要恢复更多上下文。开发者为了赶进度继续绕过问题，短期捷径逐渐变成长期减速。</p>
+<p>论证链是：阅读代码占开发的大部分认知活动 → 表达不清增加理解时间和误判 → 修改风险上升 → 团队更不愿整理 → 混乱自我强化。这个机制可信，但书中大部分证据是作者经验和案例，不是对照研究。</p>
+<h2 id="_5">核心论点二：命名、函数和边界应表达意图</h2>
+<p>名称应回答用途而非类型缩写；函数应保持内聚、控制抽象层次和副作用；错误处理与第三方边界应让正常逻辑可读。测试则保护整理过程。</p>
+<p>这些目标普遍有效，具体处方却有争议。“函数必须极短”“参数越少越好”“注释通常是失败”等说法忽略了数学算法、数据管道、性能热点、公共 API 和领域文档等语境。衡量标准应是理解和改变是否更容易。</p>
+<h2 id="_6">核心论点三：整洁是一项持续活动</h2>
+<p>“童子军军规”要求离开代码时比进入时稍好。其优势是把改进分散到日常修改，避免大型清理；风险是顺手改动超出任务边界，使提交难评审。需要用小提交和测试控制范围。</p>
+<h2 id="_7">业界不同观点</h2>
+<ul>
+<li>出版社公开章节同时列出 Stroustrup、Booch、Dave Thomas、Michael Feathers、Ron Jeffries 和 Ward Cunningham 对 clean code 的不同定义；书本身已承认这是多个思想流派，而非单一公式。<a href="https://www.informit.com/articles/article.aspx?p=1235624">官方章节</a></li>
+<li>Dan Abramov 在“Goodbye, Clean Code”中反思自己为了消除重复而破坏同事实现，主张不要为了原则删除还没理解的代码。这是对机械套用整洁规则的重要纠偏。<a href="https://overreacted.io/goodbye-clean-code/">作者文章</a></li>
+<li>Linux 内核编码风格服务于 C、补丁评审和内核约束，与书中的 Java/OO 偏好不同，说明风格应服从生态和协作方式。<a href="https://www.kernel.org/doc/html/latest/process/coding-style.html">Linux 内核官方风格</a></li>
+</ul>
+<h2 id="_8">时效性判断</h2>
+<p>命名、局部性、错误可见性和测试原则仍有效；Java 细节、以类为中心的设计和部分并发建议已经老化。书中案例可用来练习判断，不能转成 lint 规则全集。</p>
+<h2 id="_9">读后行动</h2>
+<ol>
+<li>每条规则先写出它要降低的具体风险。</li>
+<li>用代码评审耗时、缺陷和修改范围验证规则，而非争论审美。</li>
+<li>整理和功能改变尽量分开，让差异可检查、可回退。</li>
+</ol>
+<h2 id="_10">最终评价</h2>
+<p>值得读，但需要“带着反方一起读”。它成功提高了行业对可读性的重视，也最容易被误用成资历压人的风格教条。</p></article>
+  </main>
+</div>
+<footer class="site-footer">
+  <p>个人学习记录 · 明确区分作者主张、证据、外部观点与个人判断。笔记不替代原书。</p>
+</footer>
+<script src="../assets/site.js"></script>
+</body>
+</html>
