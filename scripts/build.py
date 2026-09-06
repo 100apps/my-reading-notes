@@ -50,6 +50,7 @@ def header(home_href: str) -> str:
   <div class="header-actions">
     <a class="quiet-link" href="{sources_href}">来源与版权</a>
     <a class="quiet-link" href="{home_href}#method">关于这套笔记</a>
+    <a class="quiet-link" href="https://github.com/100apps/my-reading-notes">GitHub</a>
     <button class="icon-button" type="button" data-theme-toggle>深浅色</button>
   </div>
 </header>"""
