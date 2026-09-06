@@ -5,9 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="把反复出现的设计结构命名为共享语言；模式是诊断词汇，不是套用模板。">
   <title>《设计模式》｜我的读书笔记</title>
-  <link rel="stylesheet" href="../assets/style.css">
+  <link rel="stylesheet" href="../assets/style.css?v=5625cf599eef">
 </head>
 <body>
+<a class="skip-link" href="#main-content">跳到正文</a>
 <div id="progress" aria-hidden="true"></div>
 <header class="site-header">
   <a class="brand" href="../index.html">我的读书笔记</a>
@@ -18,14 +19,25 @@
     <button class="icon-button" type="button" data-theme-toggle>深浅色</button>
   </div>
 </header>
-<button class="icon-button menu-button" type="button" data-menu-toggle aria-label="打开目录" aria-expanded="false">目录</button>
 <div class="reader-shell">
   <aside class="reader-sidebar" aria-label="文档目录">
-    <p class="sidebar-label">Design Patterns: Elements of Reusable Object-Oriented Software</p>
-    <p class="toc-title">阅读目录</p>
-    <nav id="toc"></nav>
+    <details class="reader-toc" id="reader-toc">
+      <summary><span>阅读目录</span><span class="toc-count">8 节</span></summary>
+      <div class="toc-content">
+        <p class="sidebar-label">Design Patterns: Elements of Reusable Object-Oriented Software</p>
+        <nav id="toc" aria-label="章节导航"><ol><li><a href="#_2" class="level-2">版本与阅读范围</a></li><li><a href="#_3" class="level-2">一句话结论</a></li><li><a href="#_4" class="level-2">核心论点一：可复用设计依赖稳定点与变化点的分离</a></li><li><a href="#_5" class="level-2">核心论点二：对象组合通常比类继承更灵活</a></li><li><a href="#_6" class="level-2">核心论点三：模式名称可以压缩团队沟通</a></li><li><a href="#_7" class="level-2">当代对照与批评</a></li><li><a href="#_8" class="level-2">推荐读法</a></li><li><a href="#_9" class="level-2">最终评价</a></li></ol></nav>
+      </div>
+    </details>
   </aside>
-  <main class="reader-main">
+  <main class="reader-main" id="main-content" tabindex="-1">
+    <div class="reader-toolbar" aria-label="阅读工具">
+      <a class="quiet-link" href="../index.html">← 返回书架</a>
+      <div class="reading-settings" data-reading-settings hidden>
+        <button class="icon-button" type="button" data-font-decrease aria-label="减小正文字号">A−</button>
+        <output class="font-size-label" data-font-label aria-live="polite">18</output>
+        <button class="icon-button" type="button" data-font-increase aria-label="增大正文字号">A＋</button>
+      </div>
+    </div>
     <article class="paper"><h1 id="_1">《设计模式》：共享设计语言，而不是二十三种模板</h1><div class="book-tags">
   <span class="book-tag">软件工程</span>
   <span class="book-tag">结构化初读</span>
@@ -35,38 +47,40 @@
 <blockquote>
 <p>笔记状态：结构化初读｜作者：Erich Gamma、Richard Helm、Ralph Johnson、John Vlissides</p>
 </blockquote>
-<h2 id="_2">版本与阅读范围</h2>
+<h2 id="_2" tabindex="-1">版本与阅读范围</h2><a class="section-toc" href="#reader-toc">目录 ↑</a>
 <p>本地 PDF 仅 82 页、约 0.3 MB，版本与完整性需要进一步核验。报告按 GoF 原书的创建型、结构型、行为型模式，以及“针对接口编程、组合优于继承、封装变化”的总体思想整理。</p>
-<h2 id="_3">一句话结论</h2>
+<h2 id="_3" tabindex="-1">一句话结论</h2><a class="section-toc" href="#reader-toc">目录 ↑</a>
 <p>模式的核心价值是给反复出现的设计张力命名，让团队能够讨论意图和取舍；一旦把模式当成类图模板，抽象就会反过来制造复杂度。</p>
-<h2 id="_4">核心论点一：可复用设计依赖稳定点与变化点的分离</h2>
+<h2 id="_4" tabindex="-1">核心论点一：可复用设计依赖稳定点与变化点的分离</h2><a class="section-toc" href="#reader-toc">目录 ↑</a>
 <p>策略封装算法变化，观察者分离发布者和订阅者，抽象工厂隔离对象族创建，适配器保护已有接口。不同模式都在回答：什么应稳定，什么预计变化，谁负责选择。</p>
 <p>论证方式是问题情境、参与者结构、协作、效果和样例代码。它提供的是经过归纳的设计方案，而非证明；如果预测的变化从未发生，额外间接层就只有成本。</p>
-<h2 id="_5">核心论点二：对象组合通常比类继承更灵活</h2>
+<h2 id="_5" tabindex="-1">核心论点二：对象组合通常比类继承更灵活</h2><a class="section-toc" href="#reader-toc">目录 ↑</a>
 <p>继承在编译期固定关系，并可能暴露父类实现；组合通过对象协作在运行时替换行为。许多模式用委托和小接口建立可变结构。</p>
 <p>“组合优于继承”不是“禁止继承”。稳定的 is-a 关系、框架协议和代数数据类型仍可能自然。真正问题是复用需要共享契约，还是共享实现与状态。</p>
-<h2 id="_6">核心论点三：模式名称可以压缩团队沟通</h2>
+<h2 id="_6" tabindex="-1">核心论点三：模式名称可以压缩团队沟通</h2><a class="section-toc" href="#reader-toc">目录 ↑</a>
 <p>“这里用策略而不是条件分支”“这个适配器保护了第三方边界”能快速传递设计意图。共同词汇也有风险：说出模式名不代表问题已经分析，资深者可能用术语压制更简单方案。</p>
 <p>出版社确认原书由四位作者于 1994 年出版，目标是可复用面向对象设计。<a href="https://www.pearson.com/en-us/subject-catalog/p/design-patterns-elements-of-reusable-object-oriented-software/P200000009480/9780321700698">Pearson 官方书页</a></p>
-<h2 id="_7">当代对照与批评</h2>
+<h2 id="_7" tabindex="-1">当代对照与批评</h2><a class="section-toc" href="#reader-toc">目录 ↑</a>
 <ul>
 <li>Peter Norvig 展示在动态语言中实现多个 GoF 模式所需的结构明显减少，说明一些模式是在弥补语言能力，而非永恒的设计实体。<a href="https://norvig.com/design-patterns/">Design Patterns in Dynamic Languages</a></li>
 <li>闭包、迭代器、模块、泛型、代数数据类型、依赖注入容器和框架约定已经吸收许多模式。今天应寻找语言的惯用表达，而不是复刻 C++ 类图。</li>
 <li>模式只能组织局部对象协作，不能替代领域建模、数据一致性、并发、分布式失败和系统演进策略。</li>
 </ul>
-<h2 id="_8">推荐读法</h2>
+<h2 id="_8" tabindex="-1">推荐读法</h2><a class="section-toc" href="#reader-toc">目录 ↑</a>
 <ol>
 <li>先读每个模式的“意图、适用性、效果”，再看结构图。</li>
 <li>在真实代码中识别已存在的变化压力，不为可能永远不来的变化预建模式。</li>
 <li>同时写下不用模式的最简单方案，并比较修改成本。</li>
 </ol>
-<h2 id="_9">最终评价</h2>
-<p>它是一部历史影响巨大的设计词典。应该学习模式背后的力与取舍，避免背诵二十三个名字或为了显得专业而增加对象数量。</p></article>
+<h2 id="_9" tabindex="-1">最终评价</h2><a class="section-toc" href="#reader-toc">目录 ↑</a>
+<p>它是一部历史影响巨大的设计词典。应该学习模式背后的力与取舍，避免背诵二十三个名字或为了显得专业而增加对象数量。</p>
+      <div class="reader-end"><a href="#reader-toc">↑ 返回目录</a><a href="../index.html">返回书架 →</a></div>
+    </article>
   </main>
 </div>
 <footer class="site-footer">
   <p>个人学习记录 · 明确区分作者主张、证据、外部观点与个人判断。笔记不替代原书。</p>
 </footer>
-<script src="../assets/site.js"></script>
+<script src="../assets/site.js?v=5bec0d2d7a20"></script>
 </body>
 </html>

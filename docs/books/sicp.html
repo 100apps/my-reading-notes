@@ -5,9 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="用抽象、组合、求值模型和解释器训练关于计算过程的思考能力。">
   <title>《计算机程序的构造和解释》｜我的读书笔记</title>
-  <link rel="stylesheet" href="../assets/style.css">
+  <link rel="stylesheet" href="../assets/style.css?v=5625cf599eef">
 </head>
 <body>
+<a class="skip-link" href="#main-content">跳到正文</a>
 <div id="progress" aria-hidden="true"></div>
 <header class="site-header">
   <a class="brand" href="../index.html">我的读书笔记</a>
@@ -18,14 +19,25 @@
     <button class="icon-button" type="button" data-theme-toggle>深浅色</button>
   </div>
 </header>
-<button class="icon-button menu-button" type="button" data-menu-toggle aria-label="打开目录" aria-expanded="false">目录</button>
 <div class="reader-shell">
   <aside class="reader-sidebar" aria-label="文档目录">
-    <p class="sidebar-label">Structure and Interpretation of Computer Programs</p>
-    <p class="toc-title">阅读目录</p>
-    <nav id="toc"></nav>
+    <details class="reader-toc" id="reader-toc">
+      <summary><span>阅读目录</span><span class="toc-count">9 节</span></summary>
+      <div class="toc-content">
+        <p class="sidebar-label">Structure and Interpretation of Computer Programs</p>
+        <nav id="toc" aria-label="章节导航"><ol><li><a href="#_2" class="level-2">版本与阅读范围</a></li><li><a href="#_3" class="level-2">一句话结论</a></li><li><a href="#_4" class="level-2">核心论点一：程序是对过程的精确描述</a></li><li><a href="#_5" class="level-2">核心论点二：抽象屏障让表示可以改变而使用者不受影响</a></li><li><a href="#_6" class="level-2">核心论点三：构造解释器是理解语言最直接的方法</a></li><li><a href="#_7" class="level-2">当代对照与争议</a></li><li><a href="#_8" class="level-2">时效性与适用边界</a></li><li><a href="#_9" class="level-2">推荐读法</a></li><li><a href="#_10" class="level-2">最终评价</a></li></ol></nav>
+      </div>
+    </details>
   </aside>
-  <main class="reader-main">
+  <main class="reader-main" id="main-content" tabindex="-1">
+    <div class="reader-toolbar" aria-label="阅读工具">
+      <a class="quiet-link" href="../index.html">← 返回书架</a>
+      <div class="reading-settings" data-reading-settings hidden>
+        <button class="icon-button" type="button" data-font-decrease aria-label="减小正文字号">A−</button>
+        <output class="font-size-label" data-font-label aria-live="polite">18</output>
+        <button class="icon-button" type="button" data-font-increase aria-label="增大正文字号">A＋</button>
+      </div>
+    </div>
     <article class="paper"><h1 id="_1">《计算机程序的构造和解释》：学习如何描述计算过程</h1><div class="book-tags">
   <span class="book-tag">计算机基础</span>
   <span class="book-tag">结构化初读</span>
@@ -35,40 +47,42 @@
 <blockquote>
 <p>笔记状态：结构化初读｜作者：Harold Abelson、Gerald Jay Sussman、Julie Sussman</p>
 </blockquote>
-<h2 id="_2">版本与阅读范围</h2>
+<h2 id="_2" tabindex="-1">版本与阅读范围</h2><a class="section-toc" href="#reader-toc">目录 ↑</a>
 <p>本地中文版共 492 个扫描页，无可用文本层。报告依照第二版的五章结构：过程抽象、数据抽象、状态与模块化、元语言抽象、寄存器机器，并与 MIT Press 开放版本及 2022 年 JavaScript 版对照。</p>
-<h2 id="_3">一句话结论</h2>
+<h2 id="_3" tabindex="-1">一句话结论</h2><a class="section-toc" href="#reader-toc">目录 ↑</a>
 <p>编程的核心不是掌握一种语法，而是获得构造计算过程的表达工具：抽象、组合、求值模型和语言解释器。</p>
-<h2 id="_4">核心论点一：程序是对过程的精确描述</h2>
+<h2 id="_4" tabindex="-1">核心论点一：程序是对过程的精确描述</h2><a class="section-toc" href="#reader-toc">目录 ↑</a>
 <p>书从递归与迭代过程、增长阶、数值方法和高阶过程开始。函数不仅计算结果，还描述一个随时间和空间展开的过程；同样的数学定义，可以产生完全不同的计算资源消耗。</p>
 <p>论证方式是可执行例子加代换模型：读者可以逐步展开求值，观察尾递归、树递归与高阶组合的差异。这是一种建设性论证，不依赖“最佳实践”权威。</p>
-<h2 id="_5">核心论点二：抽象屏障让表示可以改变而使用者不受影响</h2>
+<h2 id="_5" tabindex="-1">核心论点二：抽象屏障让表示可以改变而使用者不受影响</h2><a class="section-toc" href="#reader-toc">目录 ↑</a>
 <p>数据抽象把“对象是什么”改写为“对象支持哪些操作”；闭包、消息传递和通用操作展示多种组织数据与行为的方式。其论证链是：稳定契约 → 隐藏表示 → 局部推理 → 可替换实现。</p>
 <p>抽象并非越多越好。屏障只有在隔离真实变化时才有价值；如果接口只是机械转发，会增加间接性而没有降低认知负担。</p>
-<h2 id="_6">核心论点三：构造解释器是理解语言最直接的方法</h2>
+<h2 id="_6" tabindex="-1">核心论点三：构造解释器是理解语言最直接的方法</h2><a class="section-toc" href="#reader-toc">目录 ↑</a>
 <p>第四、五章把求值规则、环境模型、惰性求值、非确定计算、逻辑编程、编译和寄存器机器放在同一主线上。读者不再把语言看成固定语法，而把它看成一组可设计的语义选择。</p>
 <p>这是全书最独特的论证：通过实现一个语言证明语言机制可以被分解和重组。理解 <code>eval/apply</code> 循环后，框架 DSL、查询语言、配置系统和编译器不再完全神秘。</p>
-<h2 id="_7">当代对照与争议</h2>
+<h2 id="_7" tabindex="-1">当代对照与争议</h2><a class="section-toc" href="#reader-toc">目录 ↑</a>
 <ul>
 <li>MIT Press 把第二版以 CC BY-SA 开放，并说明其新增主题包括状态、并发、函数式、惰性和非确定计算。<a href="https://mitpress.mit.edu/9780262510875/structure-and-interpretation-of-computer-programs/">第二版官方页面</a></li>
 <li>2022 年 JavaScript 版保留核心思想，却重写了解析器、求值器和编译器部分。这说明 SICP 的对象是计算模型，不是 Scheme 崇拜；语言可以变，思想仍可迁移。<a href="https://mitpress.mit.edu/9780262543231/structure-and-interpretation-of-computer-programs/">JavaScript 版</a></li>
 <li>反方意见主要来自教学顺序：初学者同时承担递归、形式模型和 Scheme 语法，认知负荷很高。How to Design Programs 更强调从数据定义和系统化设计配方入门，是另一条教学路线。<a href="https://htdp.org/">HtDP 官方开放教材</a></li>
 </ul>
-<h2 id="_8">时效性与适用边界</h2>
+<h2 id="_8" tabindex="-1">时效性与适用边界</h2><a class="section-toc" href="#reader-toc">目录 ↑</a>
 <p>语法和工具并不现代，但抽象、解释、状态和求值的冲突仍然现代。它不替代软件工程、调试、部署和团队协作训练，也不适合当作速成语言教程。</p>
-<h2 id="_9">推荐读法</h2>
+<h2 id="_9" tabindex="-1">推荐读法</h2><a class="section-toc" href="#reader-toc">目录 ↑</a>
 <ol>
 <li>每个重要过程亲手运行并画出求值过程。</li>
 <li>第一遍重点读前三章；第四、五章以实现迷你解释器为完成标准。</li>
 <li>每章问一次：这个抽象隐藏了什么，又泄漏了什么？</li>
 </ol>
-<h2 id="_10">最终评价</h2>
-<p>这是一本训练“造语言、造抽象、造模型”的书。它的难度来自要求读者改变思考层级；如果只阅读答案而不运行程序，最核心的论据就丢失了。</p></article>
+<h2 id="_10" tabindex="-1">最终评价</h2><a class="section-toc" href="#reader-toc">目录 ↑</a>
+<p>这是一本训练“造语言、造抽象、造模型”的书。它的难度来自要求读者改变思考层级；如果只阅读答案而不运行程序，最核心的论据就丢失了。</p>
+      <div class="reader-end"><a href="#reader-toc">↑ 返回目录</a><a href="../index.html">返回书架 →</a></div>
+    </article>
   </main>
 </div>
 <footer class="site-footer">
   <p>个人学习记录 · 明确区分作者主张、证据、外部观点与个人判断。笔记不替代原书。</p>
 </footer>
-<script src="../assets/site.js"></script>
+<script src="../assets/site.js?v=5bec0d2d7a20"></script>
 </body>
 </html>

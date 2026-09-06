@@ -5,9 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="先用特征测试和接缝建立安全边界，再改变缺乏测试的遗留代码。">
   <title>《修改代码的艺术》｜我的读书笔记</title>
-  <link rel="stylesheet" href="../assets/style.css">
+  <link rel="stylesheet" href="../assets/style.css?v=5625cf599eef">
 </head>
 <body>
+<a class="skip-link" href="#main-content">跳到正文</a>
 <div id="progress" aria-hidden="true"></div>
 <header class="site-header">
   <a class="brand" href="../index.html">我的读书笔记</a>
@@ -18,14 +19,25 @@
     <button class="icon-button" type="button" data-theme-toggle>深浅色</button>
   </div>
 </header>
-<button class="icon-button menu-button" type="button" data-menu-toggle aria-label="打开目录" aria-expanded="false">目录</button>
 <div class="reader-shell">
   <aside class="reader-sidebar" aria-label="文档目录">
-    <p class="sidebar-label">Working Effectively with Legacy Code</p>
-    <p class="toc-title">阅读目录</p>
-    <nav id="toc"></nav>
+    <details class="reader-toc" id="reader-toc">
+      <summary><span>阅读目录</span><span class="toc-count">8 节</span></summary>
+      <div class="toc-content">
+        <p class="sidebar-label">Working Effectively with Legacy Code</p>
+        <nav id="toc" aria-label="章节导航"><ol><li><a href="#_2" class="level-2">版本与阅读范围</a></li><li><a href="#_3" class="level-2">一句话结论</a></li><li><a href="#_4" class="level-2">核心论点一：遗留代码的关键问题是缺少可靠反馈</a></li><li><a href="#_5" class="level-2">核心论点二：特征测试先记录现状，不急于规定理想</a></li><li><a href="#_6" class="level-2">核心论点三：接缝让行为可以在不直接修改目标代码时改变</a></li><li><a href="#_7" class="level-2">当代对照与不同观点</a></li><li><a href="#_8" class="level-2">实践顺序</a></li><li><a href="#_9" class="level-2">最终评价</a></li></ol></nav>
+      </div>
+    </details>
   </aside>
-  <main class="reader-main">
+  <main class="reader-main" id="main-content" tabindex="-1">
+    <div class="reader-toolbar" aria-label="阅读工具">
+      <a class="quiet-link" href="../index.html">← 返回书架</a>
+      <div class="reading-settings" data-reading-settings hidden>
+        <button class="icon-button" type="button" data-font-decrease aria-label="减小正文字号">A−</button>
+        <output class="font-size-label" data-font-label aria-live="polite">18</output>
+        <button class="icon-button" type="button" data-font-increase aria-label="增大正文字号">A＋</button>
+      </div>
+    </div>
     <article class="paper"><h1 id="_1">《修改代码的艺术》：先获得安全感，再改变遗留系统</h1><div class="book-tags">
   <span class="book-tag">软件工程</span>
   <span class="book-tag">结构化初读</span>
@@ -35,26 +47,26 @@
 <blockquote>
 <p>笔记状态：结构化初读｜作者：Michael Feathers</p>
 </blockquote>
-<h2 id="_2">版本与阅读范围</h2>
+<h2 id="_2" tabindex="-1">版本与阅读范围</h2><a class="section-toc" href="#reader-toc">目录 ↑</a>
 <p>本地中文版共 360 页，有文本层但没有目录书签。报告依据本书围绕“修改原因、反馈、接缝、打破依赖、特征测试”的问题式结构整理。</p>
-<h2 id="_3">一句话结论</h2>
+<h2 id="_3" tabindex="-1">一句话结论</h2><a class="section-toc" href="#reader-toc">目录 ↑</a>
 <p>面对没有测试的代码，第一目标不是设计得漂亮，而是用最小改动建立可观察、可控制的反馈边界，然后再安全改变行为。</p>
-<h2 id="_4">核心论点一：遗留代码的关键问题是缺少可靠反馈</h2>
+<h2 id="_4" tabindex="-1">核心论点一：遗留代码的关键问题是缺少可靠反馈</h2><a class="section-toc" href="#reader-toc">目录 ↑</a>
 <p>Feathers 用“没有测试的代码”重新定义 legacy code，意图不是否定年龄或作者，而是指出修改时无法快速知道破坏了什么。</p>
 <p>这个定义有意简化：生产监控、类型系统和集成测试也能提供反馈，测试覆盖同样可能虚假。但它非常有效地把情绪化标签转成行动问题——下一步如何建立保护。</p>
-<h2 id="_5">核心论点二：特征测试先记录现状，不急于规定理想</h2>
+<h2 id="_5" tabindex="-1">核心论点二：特征测试先记录现状，不急于规定理想</h2><a class="section-toc" href="#reader-toc">目录 ↑</a>
 <p>当真实行为不清楚时，先运行代码、观察输出并把当前行为固定下来，包括一些暂时不能改变的怪异之处。特征测试的目标是发现系统现在做什么，为后续修改提供报警器。</p>
 <p>论证链是：没有可信规格 → 代码本身成为事实来源 → 用测试捕获可观察事实 → 小范围改变 → 根据业务目标区分应保留和应修复的行为。必须避免把真实缺陷永久神圣化；测试名称应标出“现状保护”还是“需求规格”。</p>
-<h2 id="_6">核心论点三：接缝让行为可以在不直接修改目标代码时改变</h2>
+<h2 id="_6" tabindex="-1">核心论点三：接缝让行为可以在不直接修改目标代码时改变</h2><a class="section-toc" href="#reader-toc">目录 ↑</a>
 <p>接缝是可以改变行为而无需在该处编辑代码的位置。对象、多态、链接和预处理等接缝可用于替换难控制的依赖。书中的大量技术是在受限语言和旧代码中创造测试入口。</p>
 <p>出版社公开章节指出，现有代码通常天然不利于测试，并介绍接缝及其类型。<a href="https://www.informit.com/articles/article.aspx?p=359417">InformIT 官方章节</a></p>
-<h2 id="_7">当代对照与不同观点</h2>
+<h2 id="_7" tabindex="-1">当代对照与不同观点</h2><a class="section-toc" href="#reader-toc">目录 ↑</a>
 <ul>
 <li>现代依赖注入、模块系统、容器化测试和运行时替换降低了部分操作难度，但数据库、全局状态和静态边界仍然常见。</li>
 <li>Fowler 的 Strangler Fig 模式从系统边界逐步替换旧能力，适合单体无法安全内部重构时使用；它把本书的增量思想扩展到架构迁移。<a href="https://martinfowler.com/bliki/StranglerFigApplication.html">Strangler Fig</a></li>
 <li>“先加测试”也不是无成本。对即将删除、低风险且稳定的代码建立细粒度测试可能浪费投入；测试深度应由变更风险、可逆性和寿命决定。</li>
 </ul>
-<h2 id="_8">实践顺序</h2>
+<h2 id="_8" tabindex="-1">实践顺序</h2><a class="section-toc" href="#reader-toc">目录 ↑</a>
 <ol>
 <li>明确这次修改要改变的可观察行为。</li>
 <li>找到最小可用接缝，加入特征测试。</li>
@@ -62,13 +74,15 @@
 <li>在保护下重构，再实现行为变化。</li>
 <li>用生产监控和逐步发布补足测试未知区。</li>
 </ol>
-<h2 id="_9">最终评价</h2>
-<p>它不是优雅设计目录，而是高风险现场的急救手册。最成熟的地方在于接受现实约束：先建立一小块确定性，再扩展可安全修改的区域。</p></article>
+<h2 id="_9" tabindex="-1">最终评价</h2><a class="section-toc" href="#reader-toc">目录 ↑</a>
+<p>它不是优雅设计目录，而是高风险现场的急救手册。最成熟的地方在于接受现实约束：先建立一小块确定性，再扩展可安全修改的区域。</p>
+      <div class="reader-end"><a href="#reader-toc">↑ 返回目录</a><a href="../index.html">返回书架 →</a></div>
+    </article>
   </main>
 </div>
 <footer class="site-footer">
   <p>个人学习记录 · 明确区分作者主张、证据、外部观点与个人判断。笔记不替代原书。</p>
 </footer>
-<script src="../assets/site.js"></script>
+<script src="../assets/site.js?v=5bec0d2d7a20"></script>
 </body>
 </html>

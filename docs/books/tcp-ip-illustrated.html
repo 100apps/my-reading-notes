@@ -5,9 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="通过抓包和实验观察协议真实行为，把网络规范转化为可验证的运行机制。">
   <title>《TCP/IP 详解 卷1：协议》｜我的读书笔记</title>
-  <link rel="stylesheet" href="../assets/style.css">
+  <link rel="stylesheet" href="../assets/style.css?v=5625cf599eef">
 </head>
 <body>
+<a class="skip-link" href="#main-content">跳到正文</a>
 <div id="progress" aria-hidden="true"></div>
 <header class="site-header">
   <a class="brand" href="../index.html">我的读书笔记</a>
@@ -18,14 +19,25 @@
     <button class="icon-button" type="button" data-theme-toggle>深浅色</button>
   </div>
 </header>
-<button class="icon-button menu-button" type="button" data-menu-toggle aria-label="打开目录" aria-expanded="false">目录</button>
 <div class="reader-shell">
   <aside class="reader-sidebar" aria-label="文档目录">
-    <p class="sidebar-label">TCP/IP Illustrated, Volume 1: The Protocols</p>
-    <p class="toc-title">阅读目录</p>
-    <nav id="toc"></nav>
+    <details class="reader-toc" id="reader-toc">
+      <summary><span>阅读目录</span><span class="toc-count">9 节</span></summary>
+      <div class="toc-content">
+        <p class="sidebar-label">TCP/IP Illustrated, Volume 1: The Protocols</p>
+        <nav id="toc" aria-label="章节导航"><ol><li><a href="#_1" class="level-2">版本与阅读范围</a></li><li><a href="#_2" class="level-2">一句话结论</a></li><li><a href="#_3" class="level-2">核心论点一：协议是端点与中间节点共同执行的状态机</a></li><li><a href="#_4" class="level-2">核心论点二：可靠传输来自多种机制协同，而不是一个“可靠”开关</a></li><li><a href="#_5" class="level-2">核心论点三：分层是分析工具，但真实问题会跨层</a></li><li><a href="#_6" class="level-2">当代对照与不同观点</a></li><li><a href="#_7" class="level-2">已过时或需谨慎的内容</a></li><li><a href="#_8" class="level-2">读后行动</a></li><li><a href="#_9" class="level-2">最终评价</a></li></ol></nav>
+      </div>
+    </details>
   </aside>
-  <main class="reader-main">
+  <main class="reader-main" id="main-content" tabindex="-1">
+    <div class="reader-toolbar" aria-label="阅读工具">
+      <a class="quiet-link" href="../index.html">← 返回书架</a>
+      <div class="reading-settings" data-reading-settings hidden>
+        <button class="icon-button" type="button" data-font-decrease aria-label="减小正文字号">A−</button>
+        <output class="font-size-label" data-font-label aria-live="polite">18</output>
+        <button class="icon-button" type="button" data-font-increase aria-label="增大正文字号">A＋</button>
+      </div>
+    </div>
     <article class="paper"><h1 id="tcpip-1">《TCP/IP 详解 卷1》：用实验观察协议</h1><div class="book-tags">
   <span class="book-tag">计算机基础</span>
   <span class="book-tag">结构化初读</span>
@@ -35,40 +47,42 @@
 <blockquote>
 <p>笔记状态：结构化初读｜原著：W. Richard Stevens</p>
 </blockquote>
-<h2 id="_1">版本与阅读范围</h2>
+<h2 id="_1" tabindex="-1">版本与阅读范围</h2><a class="section-toc" href="#reader-toc">目录 ↑</a>
 <p>本地文件共 426 页，对应 1990 年代的第一版体系，包含链路层、IPv4、ARP/RARP、ICMP、路由、UDP、广播/多播、DNS、BOOTP、TCP 以及若干应用协议。报告依据目录和书中的实验方法整理，现代规范以 IETF RFC 为准。</p>
-<h2 id="_2">一句话结论</h2>
+<h2 id="_2" tabindex="-1">一句话结论</h2><a class="section-toc" href="#reader-toc">目录 ↑</a>
 <p>理解网络最有效的方法不是只背分层和报文字段，而是制造条件、抓取数据包、比较状态变化，并用规范解释观察结果。</p>
-<h2 id="_3">核心论点一：协议是端点与中间节点共同执行的状态机</h2>
+<h2 id="_3" tabindex="-1">核心论点一：协议是端点与中间节点共同执行的状态机</h2><a class="section-toc" href="#reader-toc">目录 ↑</a>
 <p>IP、ARP、ICMP、UDP 和 TCP 不是静态格式表。它们会因缓存、超时、重传、路由选择和错误反馈改变状态。作者通过 <code>tcpdump</code> 等工具把不可见交互展开成时间序列。</p>
 <p>论证链是：提出一个协议问题 → 主动制造网络条件 → 捕获实际报文 → 对照首部字段与时间 → 推断实现的状态迁移。该方法把规范性描述和真实实现连接起来，是全书最耐久的贡献。</p>
-<h2 id="_4">核心论点二：可靠传输来自多种机制协同，而不是一个“可靠”开关</h2>
+<h2 id="_4" tabindex="-1">核心论点二：可靠传输来自多种机制协同，而不是一个“可靠”开关</h2><a class="section-toc" href="#reader-toc">目录 ↑</a>
 <p>TCP 依靠序号、确认、窗口、超时、重传和拥塞控制，在可能丢包、乱序和重复的 IP 网络上提供字节流。任何一个机制都无法单独保证整体性质。</p>
 <p>这是一种机制组合论证：先观察正常连接，再引入丢包、延迟或关闭等边界条件，展示反馈回路怎样恢复或失败。它也提醒读者区分传输可靠性与应用语义；TCP 收到字节不等于业务事务完成。</p>
-<h2 id="_5">核心论点三：分层是分析工具，但真实问题会跨层</h2>
+<h2 id="_5" tabindex="-1">核心论点三：分层是分析工具，但真实问题会跨层</h2><a class="section-toc" href="#reader-toc">目录 ↑</a>
 <p>链路 MTU 影响 IP 分片，地址解析影响首包延迟，路由变化影响 TCP，DNS 又决定应用连接的入口。分层降低设计复杂度，却不能阻止性能和故障跨层传播。</p>
 <p>书中连续追踪报文的方式比孤立学习每一层更接近诊断实践。今天分析网络仍应同时观察应用日志、套接字状态、路由和包级证据。</p>
-<h2 id="_6">当代对照与不同观点</h2>
+<h2 id="_6" tabindex="-1">当代对照与不同观点</h2><a class="section-toc" href="#reader-toc">目录 ↑</a>
 <ul>
 <li>第一版出版于 1993 年，价值在实验方法；第二版已改用现代 Linux、Windows、macOS 环境并更新协议内容。<a href="https://www.informit.com/store/tcp-ip-illustrated-volume-1-the-protocols-9780201633467">InformIT 第一版</a>、<a href="https://www.informit.com/store/tcp-ip-illustrated-volume-1-the-protocols-9780132808217">第二版</a></li>
 <li>TCP 的现行核心规范是 RFC 9293，已经整合和替代早期 RFC 793 的大量修订。涉及精确行为时，应以当前 RFC 和目标系统实现为准。<a href="https://www.rfc-editor.org/rfc/rfc9293.html">IETF RFC 9293</a></li>
 <li>QUIC 把可靠传输、多路复用和加密放在 UDP 之上，说明 TCP/IP 分层并非终局；协议会为部署、演进和队头阻塞等问题重新划界。<a href="https://www.rfc-editor.org/rfc/rfc9000.html">IETF RFC 9000</a></li>
 </ul>
-<h2 id="_7">已过时或需谨慎的内容</h2>
+<h2 id="_7" tabindex="-1">已过时或需谨慎的内容</h2><a class="section-toc" href="#reader-toc">目录 ↑</a>
 <p>RARP、BOOTP、早期路由协议和许多命令输出更适合作为历史；IPv6、现代 DNS、安全、NAT、QUIC、云负载均衡和容器网络覆盖不足。不要把 1990 年代某个 BSD 实现的观察误当作永恒规范。</p>
-<h2 id="_8">读后行动</h2>
+<h2 id="_8" tabindex="-1">读后行动</h2><a class="section-toc" href="#reader-toc">目录 ↑</a>
 <ol>
 <li>抓取一次 DNS 查询、TCP 建连、TLS 握手和 HTTP 请求。</li>
 <li>人为加入延迟和丢包，观察重传与吞吐变化。</li>
 <li>对每个结论标记它来自 RFC、实现源码还是单次实验。</li>
 </ol>
-<h2 id="_9">最终评价</h2>
-<p>它仍是“怎样研究协议”的经典，而不是最新网络配置手册。把抓包实验与现行 RFC 配合起来读，价值远高于背诵首部字段。</p></article>
+<h2 id="_9" tabindex="-1">最终评价</h2><a class="section-toc" href="#reader-toc">目录 ↑</a>
+<p>它仍是“怎样研究协议”的经典，而不是最新网络配置手册。把抓包实验与现行 RFC 配合起来读，价值远高于背诵首部字段。</p>
+      <div class="reader-end"><a href="#reader-toc">↑ 返回目录</a><a href="../index.html">返回书架 →</a></div>
+    </article>
   </main>
 </div>
 <footer class="site-footer">
   <p>个人学习记录 · 明确区分作者主张、证据、外部观点与个人判断。笔记不替代原书。</p>
 </footer>
-<script src="../assets/site.js"></script>
+<script src="../assets/site.js?v=5bec0d2d7a20"></script>
 </body>
 </html>

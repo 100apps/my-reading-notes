@@ -3,8 +3,11 @@
 
 from __future__ import annotations
 
+import hashlib
 import html
 import json
+import re
+from html.parser import HTMLParser
 from pathlib import Path
 
 import markdown
@@ -17,6 +20,44 @@ DISCUSSIONS_DIR = ROOT / "discussions"
 DOCS_DIR = ROOT / "docs"
 
 
+class Outline(HTMLParser):
+    """Extract the same headings for book, discussion, and source navigation."""
+
+    def __init__(self) -> None:
+        super().__init__()
+        self.headings = []
+        self.current = None
+
+    def handle_starttag(self, tag, attrs):
+        if tag in {"h2", "h3"}:
+            self.current = [tag, dict(attrs).get("id"), []]
+
+    def handle_data(self, data):
+        if self.current is not None:
+            self.current[2].append(data)
+
+    def handle_endtag(self, tag):
+        if self.current is not None and tag == self.current[0]:
+            level, anchor, parts = self.current
+            if anchor:
+                self.headings.append((level, anchor, "".join(parts)))
+            self.current = None
+
+    def render(self) -> str:
+        sections = []
+        for level, anchor, label in self.headings:
+            link = (f'<a href="#{html.escape(anchor, quote=True)}" '
+                    f'class="level-{level[-1]}">{html.escape(label)}</a>')
+            if level == "h3" and sections:
+                sections[-1][1].append(f"<li>{link}</li>")
+            else:
+                sections.append([link, []])
+        return "<ol>" + "".join(
+            f"<li>{link}" + ("<ol>" + "".join(children) + "</ol>" if children else "") + "</li>"
+            for link, children in sections
+        ) + "</ol>"
+
+
 def markdown_to_html(text: str) -> str:
     return markdown.markdown(
         text,
@@ -26,6 +67,10 @@ def markdown_to_html(text: str) -> str:
 
 
 def shell(*, title: str, description: str, asset_prefix: str, body: str) -> str:
+    asset_versions = {
+        name: hashlib.sha256((DOCS_DIR / "assets" / name).read_bytes()).hexdigest()[:12]
+        for name in ("style.css", "site.js")
+    }
     return f"""<!doctype html>
 <html lang="zh-CN">
 <head>
@@ -33,11 +78,11 @@ def shell(*, title: str, description: str, asset_prefix: str, body: str) -> str:
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="{html.escape(description, quote=True)}">
   <title>{html.escape(title)}</title>
-  <link rel="stylesheet" href="{asset_prefix}assets/style.css">
+  <link rel="stylesheet" href="{asset_prefix}assets/style.css?v={asset_versions['style.css']}">
 </head>
 <body>
 {body}
-<script src="{asset_prefix}assets/site.js"></script>
+<script src="{asset_prefix}assets/site.js?v={asset_versions['site.js']}"></script>
 </body>
 </html>
 """
@@ -94,7 +139,7 @@ def render_index(config: dict) -> None:
         )
 
     body = f"""{header('index.html')}
-<main class="home">
+<main class="home" id="main-content">
   <section class="hero">
     <p class="eyebrow">A PERSONAL READING SYSTEM</p>
     <h1>{html.escape(site['title'])}</h1>
@@ -134,17 +179,39 @@ def render_index(config: dict) -> None:
 
 
 def reader_layout(*, content: str, sidebar_label: str, home_href: str) -> str:
-    return f"""<div id="progress" aria-hidden="true"></div>
+    outline = Outline()
+    outline.feed(content)
+    section_count = sum(level == "h2" for level, _, _ in outline.headings)
+    content = content.replace("<table>", '<div class="table-scroll" role="region" '
+                              'aria-label="表格，可横向滚动" tabindex="0"><table>')
+    content = content.replace("</table>", "</table></div>")
+    content = re.sub(r'<(h[23]) id="([^"]+)">', r'<\1 id="\2" tabindex="-1">', content)
+    content = content.replace("</h2>", '</h2><a class="section-toc" href="#reader-toc">目录 ↑</a>')
+    return f"""<a class="skip-link" href="#main-content">跳到正文</a>
+<div id="progress" aria-hidden="true"></div>
 {header(home_href)}
-<button class="icon-button menu-button" type="button" data-menu-toggle aria-label="打开目录" aria-expanded="false">目录</button>
 <div class="reader-shell">
   <aside class="reader-sidebar" aria-label="文档目录">
-    <p class="sidebar-label">{html.escape(sidebar_label)}</p>
-    <p class="toc-title">阅读目录</p>
-    <nav id="toc"></nav>
+    <details class="reader-toc" id="reader-toc">
+      <summary><span>阅读目录</span><span class="toc-count">{section_count} 节</span></summary>
+      <div class="toc-content">
+        <p class="sidebar-label">{html.escape(sidebar_label)}</p>
+        <nav id="toc" aria-label="章节导航">{outline.render()}</nav>
+      </div>
+    </details>
   </aside>
-  <main class="reader-main">
-    <article class="paper">{content}</article>
+  <main class="reader-main" id="main-content" tabindex="-1">
+    <div class="reader-toolbar" aria-label="阅读工具">
+      <a class="quiet-link" href="{home_href}">← 返回书架</a>
+      <div class="reading-settings" data-reading-settings hidden>
+        <button class="icon-button" type="button" data-font-decrease aria-label="减小正文字号">A−</button>
+        <output class="font-size-label" data-font-label aria-live="polite">18</output>
+        <button class="icon-button" type="button" data-font-increase aria-label="增大正文字号">A＋</button>
+      </div>
+    </div>
+    <article class="paper">{content}
+      <div class="reader-end"><a href="#reader-toc">↑ 返回目录</a><a href="{home_href}">返回书架 →</a></div>
+    </article>
   </main>
 </div>
 {footer()}"""
@@ -235,15 +302,15 @@ def render_sources(config: dict, source_catalog: dict) -> None:
         )
     content = f"""<h1>来源与版权清单</h1>
 <p class="book-summary">{html.escape(source_catalog['policy'])}</p>
-<h2>为什么不把全部电子书放进公开仓库</h2>
+<h2 id="copyright">为什么不把全部电子书放进公开仓库</h2>
 <p>公开读书笔记与再次分发整本受版权保护的电子书是两件事。本站公开自己的分析、讨论和合法来源；私人阅读副本仅保留在本地 <code>library/</code>，并用 SHA-256 确认版本。</p>
 <p>经核验属于公版或具有明确再分发许可的原文，可以连同来源和权利状态保存在仓库；仍受保护的版本只登记元数据，不公开文件。</p>
-<h2>来源记录</h2>
+<h2 id="source-records">来源记录</h2>
 <table>
   <thead><tr><th>书</th><th>本地文件名</th><th>格式/大小</th><th>SHA-256</th><th>公开参考</th></tr></thead>
   <tbody>{''.join(rows)}</tbody>
 </table>
-<h2>完整性说明</h2>
+<h2 id="integrity">完整性说明</h2>
 <p>校验值只能证明“以后拿到的是不是同一个文件”，不能证明文件完整、准确或具有合法来源。标有完整性警告的文件，应在正式精读前从正规渠道重新获取并更新记录。</p>"""
     body = reader_layout(
         content=content,

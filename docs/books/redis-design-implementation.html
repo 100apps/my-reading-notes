@@ -5,9 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="从数据结构、数据库、持久化、复制和集群机制理解 Redis 的实现取舍。">
   <title>《Redis 设计与实现》｜我的读书笔记</title>
-  <link rel="stylesheet" href="../assets/style.css">
+  <link rel="stylesheet" href="../assets/style.css?v=5625cf599eef">
 </head>
 <body>
+<a class="skip-link" href="#main-content">跳到正文</a>
 <div id="progress" aria-hidden="true"></div>
 <header class="site-header">
   <a class="brand" href="../index.html">我的读书笔记</a>
@@ -18,14 +19,25 @@
     <button class="icon-button" type="button" data-theme-toggle>深浅色</button>
   </div>
 </header>
-<button class="icon-button menu-button" type="button" data-menu-toggle aria-label="打开目录" aria-expanded="false">目录</button>
 <div class="reader-shell">
   <aside class="reader-sidebar" aria-label="文档目录">
-    <p class="sidebar-label">Redis 设计与实现（第二版）</p>
-    <p class="toc-title">阅读目录</p>
-    <nav id="toc"></nav>
+    <details class="reader-toc" id="reader-toc">
+      <summary><span>阅读目录</span><span class="toc-count">8 节</span></summary>
+      <div class="toc-content">
+        <p class="sidebar-label">Redis 设计与实现（第二版）</p>
+        <nav id="toc" aria-label="章节导航"><ol><li><a href="#_1" class="level-2">版本与阅读范围</a></li><li><a href="#_2" class="level-2">一句话结论</a></li><li><a href="#_3" class="level-2">核心论点一：数据表示应随规模和操作模式变化</a></li><li><a href="#_4" class="level-2">核心论点二：单线程命令执行简化状态，却没有消除并发问题</a></li><li><a href="#_5" class="level-2">核心论点三：持久化与复制是明确的数据损失权衡</a></li><li><a href="#_6" class="level-2">当代对照与不同观点</a></li><li><a href="#_7" class="level-2">推荐读法</a></li><li><a href="#_8" class="level-2">最终评价</a></li></ol></nav>
+      </div>
+    </details>
   </aside>
-  <main class="reader-main">
+  <main class="reader-main" id="main-content" tabindex="-1">
+    <div class="reader-toolbar" aria-label="阅读工具">
+      <a class="quiet-link" href="../index.html">← 返回书架</a>
+      <div class="reading-settings" data-reading-settings hidden>
+        <button class="icon-button" type="button" data-font-decrease aria-label="减小正文字号">A−</button>
+        <output class="font-size-label" data-font-label aria-live="polite">18</output>
+        <button class="icon-button" type="button" data-font-increase aria-label="增大正文字号">A＋</button>
+      </div>
+    </div>
     <article class="paper"><h1 id="redis">《Redis 设计与实现》：用源码理解性能与语义取舍</h1><div class="book-tags">
   <span class="book-tag">后端与分布式</span>
   <span class="book-tag">结构化初读</span>
@@ -35,38 +47,40 @@
 <blockquote>
 <p>笔记状态：结构化初读｜作者：黄健宏</p>
 </blockquote>
-<h2 id="_1">版本与阅读范围</h2>
+<h2 id="_1" tabindex="-1">版本与阅读范围</h2><a class="section-toc" href="#reader-toc">目录 ↑</a>
 <p>本地文件为第二版，共 392 个扫描页，围绕 Redis 早期版本的数据结构与对象、单机数据库、RDB/AOF、事件、客户端/服务端、复制、Sentinel 和集群实现展开。</p>
-<h2 id="_2">一句话结论</h2>
+<h2 id="_2" tabindex="-1">一句话结论</h2><a class="section-toc" href="#reader-toc">目录 ↑</a>
 <p>Redis 的速度和易用性不是“因为内存快”这一句话，而是数据结构编码、事件循环、渐进式操作、持久化和复制语义共同取舍的结果。</p>
-<h2 id="_3">核心论点一：数据表示应随规模和操作模式变化</h2>
+<h2 id="_3" tabindex="-1">核心论点一：数据表示应随规模和操作模式变化</h2><a class="section-toc" href="#reader-toc">目录 ↑</a>
 <p>SDS、字典、跳跃表、整数集合和压缩表示针对长度、元素类型、更新频率和内存占用做不同优化。对象层允许同一种抽象类型选择不同底层编码。</p>
 <p>论证链是：API 语义相同 → 工作负载差异很大 → 单一表示无法同时优化小对象和大对象 → 编码切换降低常见场景成本。代价是实现复杂度和转换边界，需要用源码与基准验证，而不能只记旧版阈值。</p>
-<h2 id="_4">核心论点二：单线程命令执行简化状态，却没有消除并发问题</h2>
+<h2 id="_4" tabindex="-1">核心论点二：单线程命令执行简化状态，却没有消除并发问题</h2><a class="section-toc" href="#reader-toc">目录 ↑</a>
 <p>串行执行命令让单个命令具有清晰原子边界，避免大量共享内存锁。但客户端请求仍并发到达，多个命令组成的业务操作仍可能交错；后台持久化、复制和现代 Redis 的 I/O 线程也超出“完全单线程”口号。</p>
 <p>因此需要区分：事件处理模型、命令执行语义、后台进程/线程和分布式客户端并发。书的源码路径能纠正营销式简化。</p>
-<h2 id="_5">核心论点三：持久化与复制是明确的数据损失权衡</h2>
+<h2 id="_5" tabindex="-1">核心论点三：持久化与复制是明确的数据损失权衡</h2><a class="section-toc" href="#reader-toc">目录 ↑</a>
 <p>RDB 提供时间点快照，AOF 记录写操作；同步频率决定性能与崩溃后可能丢失的数据窗口。复制、Sentinel 和集群提高可用性，却不能自动提供线性一致或零数据损失。</p>
 <p>论证应从故障时间线出发：写入何时进入内存、何时刷盘、何时到达副本、故障转移选择谁。只写“开启 AOF/主从即可高可用”隐藏了真正保证。</p>
-<h2 id="_6">当代对照与不同观点</h2>
+<h2 id="_6" tabindex="-1">当代对照与不同观点</h2><a class="section-toc" href="#reader-toc">目录 ↑</a>
 <ul>
 <li>作者的第一版内容公开在线，并说明其采用高抽象层次观察 Redis、把代码细节留给读者。这种“结构地图 + 源码验证”也是第二版最合适的读法。<a href="https://redisbook.readthedocs.io/en/latest/">作者开放版</a></li>
 <li>Redis 官方明确提示早期内部设计文档不一定反映最新实现；本书同样应绑定特定版本阅读。<a href="https://redis.io/docs/latest/operate/oss_and_stack/reference/internals/">Redis Internals</a></li>
 <li>当前 Redis 已扩展 JSON、搜索、向量等能力，源码和产品边界都与书中版本显著不同；精确实现必须以对应 tag 的官方源码为准。<a href="https://github.com/redis/redis">Redis 官方仓库</a></li>
 </ul>
-<h2 id="_7">推荐读法</h2>
+<h2 id="_7" tabindex="-1">推荐读法</h2><a class="section-toc" href="#reader-toc">目录 ↑</a>
 <ol>
 <li>为每章记录“公开语义—数据结构—复杂度—版本号”。</li>
 <li>checkout 与书相近的 Redis tag，用调试器观察一次命令执行。</li>
 <li>设计持久化和高可用时写出 RPO、RTO 与可接受一致性，而不是罗列开关。</li>
 </ol>
-<h2 id="_8">最终评价</h2>
-<p>它是很好的源码导览，但不是当前 Redis 的静态真相。最值得迁移的能力是从 API 一直追到表示、事件和故障语义，并用版本化源码检验结论。</p></article>
+<h2 id="_8" tabindex="-1">最终评价</h2><a class="section-toc" href="#reader-toc">目录 ↑</a>
+<p>它是很好的源码导览，但不是当前 Redis 的静态真相。最值得迁移的能力是从 API 一直追到表示、事件和故障语义，并用版本化源码检验结论。</p>
+      <div class="reader-end"><a href="#reader-toc">↑ 返回目录</a><a href="../index.html">返回书架 →</a></div>
+    </article>
   </main>
 </div>
 <footer class="site-footer">
   <p>个人学习记录 · 明确区分作者主张、证据、外部观点与个人判断。笔记不替代原书。</p>
 </footer>
-<script src="../assets/site.js"></script>
+<script src="../assets/site.js?v=5bec0d2d7a20"></script>
 </body>
 </html>

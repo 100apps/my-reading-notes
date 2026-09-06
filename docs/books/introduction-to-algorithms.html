@@ -5,9 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="系统学习算法设计、正确性证明和复杂度分析，而非背诵题型。">
   <title>《算法导论》｜我的读书笔记</title>
-  <link rel="stylesheet" href="../assets/style.css">
+  <link rel="stylesheet" href="../assets/style.css?v=5625cf599eef">
 </head>
 <body>
+<a class="skip-link" href="#main-content">跳到正文</a>
 <div id="progress" aria-hidden="true"></div>
 <header class="site-header">
   <a class="brand" href="../index.html">我的读书笔记</a>
@@ -18,14 +19,25 @@
     <button class="icon-button" type="button" data-theme-toggle>深浅色</button>
   </div>
 </header>
-<button class="icon-button menu-button" type="button" data-menu-toggle aria-label="打开目录" aria-expanded="false">目录</button>
 <div class="reader-shell">
   <aside class="reader-sidebar" aria-label="文档目录">
-    <p class="sidebar-label">Introduction to Algorithms</p>
-    <p class="toc-title">阅读目录</p>
-    <nav id="toc"></nav>
+    <details class="reader-toc" id="reader-toc">
+      <summary><span>阅读目录</span><span class="toc-count">8 节</span></summary>
+      <div class="toc-content">
+        <p class="sidebar-label">Introduction to Algorithms</p>
+        <nav id="toc" aria-label="章节导航"><ol><li><a href="#_2" class="level-2">版本与阅读范围</a></li><li><a href="#_3" class="level-2">一句话结论</a></li><li><a href="#_4" class="level-2">核心论点一：正确性必须由不变量和结构证明</a></li><li><a href="#_5" class="level-2">核心论点二：渐近分析建立跨机器的增长率语言</a></li><li><a href="#_6" class="level-2">核心论点三：设计范式比单个算法更可迁移</a></li><li><a href="#_7" class="level-2">当代对照与不同观点</a></li><li><a href="#_8" class="level-2">推荐读法</a></li><li><a href="#_9" class="level-2">最终评价</a></li></ol></nav>
+      </div>
+    </details>
   </aside>
-  <main class="reader-main">
+  <main class="reader-main" id="main-content" tabindex="-1">
+    <div class="reader-toolbar" aria-label="阅读工具">
+      <a class="quiet-link" href="../index.html">← 返回书架</a>
+      <div class="reading-settings" data-reading-settings hidden>
+        <button class="icon-button" type="button" data-font-decrease aria-label="减小正文字号">A−</button>
+        <output class="font-size-label" data-font-label aria-live="polite">18</output>
+        <button class="icon-button" type="button" data-font-increase aria-label="增大正文字号">A＋</button>
+      </div>
+    </div>
     <article class="paper"><h1 id="_1">《算法导论》：从“能运行”到“能证明、能比较”</h1><div class="book-tags">
   <span class="book-tag">计算机基础</span>
   <span class="book-tag">结构化初读</span>
@@ -35,38 +47,40 @@
 <blockquote>
 <p>笔记状态：结构化初读｜作者：Thomas H. Cormen、Charles E. Leiserson、Ronald L. Rivest、Clifford Stein</p>
 </blockquote>
-<h2 id="_2">版本与阅读范围</h2>
+<h2 id="_2" tabindex="-1">版本与阅读范围</h2><a class="section-toc" href="#reader-toc">目录 ↑</a>
 <p>本地文件标注第三版，但 PDF 仅 67 个大幅扫描页，需警惕合并、版面或完整性问题。报告依据第三版目录与 MIT Press 第四版官方说明整理；这本书应作为体系教材和参考书，不建议一次线性通读。</p>
-<h2 id="_3">一句话结论</h2>
+<h2 id="_3" tabindex="-1">一句话结论</h2><a class="section-toc" href="#reader-toc">目录 ↑</a>
 <p>算法学习的核心是把问题、正确性、资源成本和适用条件说清楚，而不是背下一段伪代码。</p>
-<h2 id="_4">核心论点一：正确性必须由不变量和结构证明</h2>
+<h2 id="_4" tabindex="-1">核心论点一：正确性必须由不变量和结构证明</h2><a class="section-toc" href="#reader-toc">目录 ↑</a>
 <p>循环不变量、数学归纳和交换论证等方法把“几个样例跑通”提升为“对所有满足前提的输入成立”。算法的前置条件、结束性和结果性质共同构成证明责任。</p>
 <p>书的论据不是经验意见，而是定义、定理、证明和反例。它的强项是可检验性；弱点是读者可能照抄证明形式，却没有识别现实输入是否满足模型假设。</p>
-<h2 id="_5">核心论点二：渐近分析建立跨机器的增长率语言</h2>
+<h2 id="_5" tabindex="-1">核心论点二：渐近分析建立跨机器的增长率语言</h2><a class="section-toc" href="#reader-toc">目录 ↑</a>
 <p>O、Ω、Θ 忽略常数和低阶项，比较输入规模增长时资源需求。递归式、均摊分析和概率分析把不同算法放到统一尺度。</p>
 <p>论证链是：定义输入规模与基本操作 → 建立成本函数 → 取增长阶 → 比较可扩展性。它适合排除增长率错误的方案，却不能取代基准测试；缓存、并行、常数、数据分布和实现质量会决定实际交叉点。</p>
-<h2 id="_6">核心论点三：设计范式比单个算法更可迁移</h2>
+<h2 id="_6" tabindex="-1">核心论点三：设计范式比单个算法更可迁移</h2><a class="section-toc" href="#reader-toc">目录 ↑</a>
 <p>分治、动态规划、贪心、随机化、图算法和线性规划代表不同的问题分解方式。真正能力是识别子问题结构、最优子结构和约束，而不是记住排序代码。</p>
 <p>每种范式都通过“问题定义 → 算法 → 正确性 → 复杂度 → 练习”论证。练习不是附属物，而是检验是否能迁移方法的主要证据。</p>
-<h2 id="_7">当代对照与不同观点</h2>
+<h2 id="_7" tabindex="-1">当代对照与不同观点</h2><a class="section-toc" href="#reader-toc">目录 ↑</a>
 <ul>
 <li>MIT Press 第四版在 2022 年加入二分图匹配、在线算法和机器学习等内容，并更新哈希、势函数和后缀数组；本地第三版仍可学基础，但不是最新内容索引。<a href="https://mitpress.mit.edu/9780262046305/introduction-to-algorithms/">第四版官方页面</a></li>
 <li>理论上最优不等于生产中最快。真实工程需要用代表性工作负载、内存层次和库实现做测量；反过来，单次 benchmark 也不能证明规模增长后的行为。</li>
 <li>不是每个业务问题都值得追求最优算法。数据量、实现风险和维护成本较小时，简单且显然正确的方案可能更优。</li>
 </ul>
-<h2 id="_8">推荐读法</h2>
+<h2 id="_8" tabindex="-1">推荐读法</h2><a class="section-toc" href="#reader-toc">目录 ↑</a>
 <ul>
 <li>主线：渐近分析、分治、排序、哈希、树、动态规划、贪心、图。</li>
 <li>每章至少完成一个正确性证明和一个可运行实现。</li>
 <li>建立“四栏算法卡”：前提、不变量、复杂度、失败边界。</li>
 </ul>
-<h2 id="_9">最终评价</h2>
-<p>它不是面试题词典，而是一套关于计算资源的严格语言。只读正文会高估掌握程度；证明、练习和实验才完成论证闭环。</p></article>
+<h2 id="_9" tabindex="-1">最终评价</h2><a class="section-toc" href="#reader-toc">目录 ↑</a>
+<p>它不是面试题词典，而是一套关于计算资源的严格语言。只读正文会高估掌握程度；证明、练习和实验才完成论证闭环。</p>
+      <div class="reader-end"><a href="#reader-toc">↑ 返回目录</a><a href="../index.html">返回书架 →</a></div>
+    </article>
   </main>
 </div>
 <footer class="site-footer">
   <p>个人学习记录 · 明确区分作者主张、证据、外部观点与个人判断。笔记不替代原书。</p>
 </footer>
-<script src="../assets/site.js"></script>
+<script src="../assets/site.js?v=5bec0d2d7a20"></script>
 </body>
 </html>

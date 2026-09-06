@@ -5,9 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="从程序员视角贯通机器表示、编译链接、存储层次、进程、虚拟内存和并发。">
   <title>《深入理解计算机系统》｜我的读书笔记</title>
-  <link rel="stylesheet" href="../assets/style.css">
+  <link rel="stylesheet" href="../assets/style.css?v=5625cf599eef">
 </head>
 <body>
+<a class="skip-link" href="#main-content">跳到正文</a>
 <div id="progress" aria-hidden="true"></div>
 <header class="site-header">
   <a class="brand" href="../index.html">我的读书笔记</a>
@@ -18,14 +19,25 @@
     <button class="icon-button" type="button" data-theme-toggle>深浅色</button>
   </div>
 </header>
-<button class="icon-button menu-button" type="button" data-menu-toggle aria-label="打开目录" aria-expanded="false">目录</button>
 <div class="reader-shell">
   <aside class="reader-sidebar" aria-label="文档目录">
-    <p class="sidebar-label">Computer Systems: A Programmer&#x27;s Perspective</p>
-    <p class="toc-title">阅读目录</p>
-    <nav id="toc"></nav>
+    <details class="reader-toc" id="reader-toc">
+      <summary><span>阅读目录</span><span class="toc-count">10 节</span></summary>
+      <div class="toc-content">
+        <p class="sidebar-label">Computer Systems: A Programmer&#x27;s Perspective</p>
+        <nav id="toc" aria-label="章节导航"><ol><li><a href="#_2" class="level-2">版本与阅读范围</a></li><li><a href="#_3" class="level-2">一句话结论</a></li><li><a href="#_4" class="level-2">全书论证结构</a></li><li><a href="#_5" class="level-2">核心论点一：从程序员视角学习系统更能迁移到工程实践</a></li><li><a href="#_6" class="level-2">核心论点二：表示与存储层次同时影响正确性和速度</a></li><li><a href="#io" class="level-2">核心论点三：进程、虚拟内存和 I/O 是统一的抽象系统</a></li><li><a href="#_7" class="level-2">当代对照与不同观点</a></li><li><a href="#_8" class="level-2">论证质量</a></li><li><a href="#_9" class="level-2">推荐读法</a></li><li><a href="#_10" class="level-2">最终评价</a></li></ol></nav>
+      </div>
+    </details>
   </aside>
-  <main class="reader-main">
+  <main class="reader-main" id="main-content" tabindex="-1">
+    <div class="reader-toolbar" aria-label="阅读工具">
+      <a class="quiet-link" href="../index.html">← 返回书架</a>
+      <div class="reading-settings" data-reading-settings hidden>
+        <button class="icon-button" type="button" data-font-decrease aria-label="减小正文字号">A−</button>
+        <output class="font-size-label" data-font-label aria-live="polite">18</output>
+        <button class="icon-button" type="button" data-font-increase aria-label="增大正文字号">A＋</button>
+      </div>
+    </div>
     <article class="paper"><h1 id="_1">《深入理解计算机系统》：程序员为什么必须理解系统</h1><div class="book-tags">
   <span class="book-tag">计算机基础</span>
   <span class="book-tag">结构化初读</span>
@@ -35,12 +47,12 @@
 <blockquote>
 <p>笔记状态：结构化初读｜作者：Randal E. Bryant、David R. O'Hallaron</p>
 </blockquote>
-<h2 id="_2">版本与阅读范围</h2>
+<h2 id="_2" tabindex="-1">版本与阅读范围</h2><a class="section-toc" href="#reader-toc">目录 ↑</a>
 <p>本地中文版本含中英文内容，共 1616 个扫描页，属于较早版本。报告依据全书三部分结构、章节主题和作者的课程说明整理，并用第三版官方资料校正版本差异。</p>
-<h2 id="_3">一句话结论</h2>
+<h2 id="_3" tabindex="-1">一句话结论</h2><a class="section-toc" href="#reader-toc">目录 ↑</a>
 <p>程序并不运行在抽象真空中：数据表示、编译器、处理器、缓存、链接器、操作系统和网络共同决定它是否正确、快速并且安全。</p>
-<h2 id="_4">全书论证结构</h2>
-<table>
+<h2 id="_4" tabindex="-1">全书论证结构</h2><a class="section-toc" href="#reader-toc">目录 ↑</a>
+<div class="table-scroll" role="region" aria-label="表格，可横向滚动" tabindex="0"><table>
 <thead>
 <tr>
 <th>部分</th>
@@ -65,37 +77,39 @@
 <td>构造真实的系统程序</td>
 </tr>
 </tbody>
-</table>
-<h2 id="_5">核心论点一：从程序员视角学习系统更能迁移到工程实践</h2>
+</table></div>
+<h2 id="_5" tabindex="-1">核心论点一：从程序员视角学习系统更能迁移到工程实践</h2><a class="section-toc" href="#reader-toc">目录 ↑</a>
 <p>传统体系结构教材常站在硬件设计者视角。本书从 C 程序的行为出发，追踪源代码怎样变成指令、怎样访问内存、怎样被加载和调度。作者明确把目标定义为：理解系统属性怎样影响应用程序的正确性和性能。<a href="https://csapp.cs.cmu.edu/3e/perspective.html">CS:APP 官方说明</a></p>
 <p>论证链是：具体程序现象 → 揭示支撑机制 → 通过实验修改程序 → 验证机制。Data Lab、Bomb Lab、Attack Lab、Cache Lab 和 Proxy Lab 让知识成为可观察结果，而不是硬件名词表。</p>
-<h2 id="_6">核心论点二：表示与存储层次同时影响正确性和速度</h2>
+<h2 id="_6" tabindex="-1">核心论点二：表示与存储层次同时影响正确性和速度</h2><a class="section-toc" href="#reader-toc">目录 ↑</a>
 <p>有限位宽意味着整数会回绕或溢出，浮点数只能近似多数实数；相同字节在不同解释下代表完全不同的值。缓存则让“内存访问一次”的成本随局部性产生数量级差异。</p>
 <p>这两部分采用数学模型、机器指令和测量互证，证据比纯经验法则更强。但必须区分语言语义与机器行为：C 中某些有符号溢出属于未定义行为，不能仅凭补码机器的结果推导可移植程序。C 标准草案给出了语言层契约。<a href="https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf">ISO C N1570</a></p>
-<h2 id="io">核心论点三：进程、虚拟内存和 I/O 是统一的抽象系统</h2>
+<h2 id="io" tabindex="-1">核心论点三：进程、虚拟内存和 I/O 是统一的抽象系统</h2><a class="section-toc" href="#reader-toc">目录 ↑</a>
 <p>异常控制流解释中断、系统调用、进程切换和信号；虚拟内存同时承担地址隔离、缓存和共享；Unix I/O 把文件、终端和套接字统一为描述符。这些机制共同构成应用与操作系统的边界。</p>
 <p>论证价值在于连接：链接错误、缺页、fork、并发竞态和网络服务不再是彼此孤立的问题，而是控制流、名字解析、存储和共享状态的不同表现。</p>
-<h2 id="_7">当代对照与不同观点</h2>
+<h2 id="_7" tabindex="-1">当代对照与不同观点</h2><a class="section-toc" href="#reader-toc">目录 ↑</a>
 <ul>
 <li>第三版已把主要机器示例迁移到 x86-64；本地较早版本中的 IA-32 指令细节不宜照搬，但反汇编、调用约定和内存模型的分析方法仍有效。<a href="https://csapp.cs.cmu.edu/">CS:APP 第三版官网</a></li>
 <li>本书以 C 和 Unix 为主，能暴露底层机制，却也容易让读者把某个平台经验误认成普遍语义。阅读时应同时看目标语言规范、ABI 与操作系统文档。</li>
 <li>“程序员需要懂多少底层”取决于工作。前端业务开发不必天天写汇编，但性能分析、调试崩溃、安全审计和并发故障时，这套跨层模型价值极高。</li>
 </ul>
-<h2 id="_8">论证质量</h2>
+<h2 id="_8" tabindex="-1">论证质量</h2><a class="section-toc" href="#reader-toc">目录 ↑</a>
 <p>机制解释、实验和可执行作业形成了很强的证据闭环；不足是硬件与工具会老化，而且全书广度大，容易“读懂文字却不会分析”。真正的完成标准应是做实验和解释真实程序。</p>
-<h2 id="_9">推荐读法</h2>
+<h2 id="_9" tabindex="-1">推荐读法</h2><a class="section-toc" href="#reader-toc">目录 ↑</a>
 <ul>
 <li>优先：第 1、2、3、6、7、8、9、12 章。</li>
 <li>每章保留一个可运行实验，例如查看对象文件、测缓存局部性、观察进程地址空间。</li>
 <li>遇到平台结论时标注：语言保证、ABI 约定、OS 行为还是特定 CPU 实现。</li>
 </ul>
-<h2 id="_10">最终评价</h2>
-<p>它是从“会写代码”走向“能解释代码为何如此运行”的主干教材。最值得获得的不是 x86 指令记忆，而是跨抽象层定位正确性和性能问题的能力。</p></article>
+<h2 id="_10" tabindex="-1">最终评价</h2><a class="section-toc" href="#reader-toc">目录 ↑</a>
+<p>它是从“会写代码”走向“能解释代码为何如此运行”的主干教材。最值得获得的不是 x86 指令记忆，而是跨抽象层定位正确性和性能问题的能力。</p>
+      <div class="reader-end"><a href="#reader-toc">↑ 返回目录</a><a href="../index.html">返回书架 →</a></div>
+    </article>
   </main>
 </div>
 <footer class="site-footer">
   <p>个人学习记录 · 明确区分作者主张、证据、外部观点与个人判断。笔记不替代原书。</p>
 </footer>
-<script src="../assets/site.js"></script>
+<script src="../assets/site.js?v=5bec0d2d7a20"></script>
 </body>
 </html>

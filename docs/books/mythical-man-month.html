@@ -5,9 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="软件进度不是人数的线性函数，沟通、概念一致性和不可约复杂性决定上限。">
   <title>《人月神话》｜我的读书笔记</title>
-  <link rel="stylesheet" href="../assets/style.css">
+  <link rel="stylesheet" href="../assets/style.css?v=5625cf599eef">
 </head>
 <body>
+<a class="skip-link" href="#main-content">跳到正文</a>
 <div id="progress" aria-hidden="true"></div>
 <header class="site-header">
   <a class="brand" href="../index.html">我的读书笔记</a>
@@ -18,14 +19,25 @@
     <button class="icon-button" type="button" data-theme-toggle>深浅色</button>
   </div>
 </header>
-<button class="icon-button menu-button" type="button" data-menu-toggle aria-label="打开目录" aria-expanded="false">目录</button>
 <div class="reader-shell">
   <aside class="reader-sidebar" aria-label="文档目录">
-    <p class="sidebar-label">The Mythical Man-Month</p>
-    <p class="toc-title">阅读目录</p>
-    <nav id="toc"></nav>
+    <details class="reader-toc" id="reader-toc">
+      <summary><span>阅读目录</span><span class="toc-count">9 节</span></summary>
+      <div class="toc-content">
+        <p class="sidebar-label">The Mythical Man-Month</p>
+        <nav id="toc" aria-label="章节导航"><ol><li><a href="#_2" class="level-2">版本与阅读范围</a></li><li><a href="#_3" class="level-2">一句话结论</a></li><li><a href="#_4" class="level-2">核心论点一：向延期项目增加人手，可能使它更晚</a></li><li><a href="#_5" class="level-2">核心论点二：概念一致性比功能堆积更重要</a></li><li><a href="#_6" class="level-2">核心论点三：没有单项技术带来数量级的软件生产率跃升</a></li><li><a href="#_7" class="level-2">当代对照与不同观点</a></li><li><a href="#_8" class="level-2">时效性判断</a></li><li><a href="#_9" class="level-2">读后行动</a></li><li><a href="#_10" class="level-2">最终评价</a></li></ol></nav>
+      </div>
+    </details>
   </aside>
-  <main class="reader-main">
+  <main class="reader-main" id="main-content" tabindex="-1">
+    <div class="reader-toolbar" aria-label="阅读工具">
+      <a class="quiet-link" href="../index.html">← 返回书架</a>
+      <div class="reading-settings" data-reading-settings hidden>
+        <button class="icon-button" type="button" data-font-decrease aria-label="减小正文字号">A−</button>
+        <output class="font-size-label" data-font-label aria-live="polite">18</output>
+        <button class="icon-button" type="button" data-font-increase aria-label="增大正文字号">A＋</button>
+      </div>
+    </div>
     <article class="paper"><h1 id="_1">《人月神话》：人数、沟通与软件复杂性的非线性</h1><div class="book-tags">
   <span class="book-tag">软件工程</span>
   <span class="book-tag">结构化初读</span>
@@ -35,40 +47,42 @@
 <blockquote>
 <p>笔记状态：结构化初读｜作者：Frederick P. Brooks Jr.</p>
 </blockquote>
-<h2 id="_2">版本与阅读范围</h2>
+<h2 id="_2" tabindex="-1">版本与阅读范围</h2><a class="section-toc" href="#reader-toc">目录 ↑</a>
 <p>本地文件共 218 页，为二十周年纪念版，包含“焦油坑、人月神话、外科手术队伍、概念一致性、第二系统效应、巴比伦塔”及《没有银弹》和作者回顾。</p>
-<h2 id="_3">一句话结论</h2>
+<h2 id="_3" tabindex="-1">一句话结论</h2><a class="section-toc" href="#reader-toc">目录 ↑</a>
 <p>软件进度不是人力的线性函数：任务不可任意切分，新成员需要学习，协作者之间产生沟通和集成成本，而系统还需要统一的概念设计。</p>
-<h2 id="_4">核心论点一：向延期项目增加人手，可能使它更晚</h2>
+<h2 id="_4" tabindex="-1">核心论点一：向延期项目增加人手，可能使它更晚</h2><a class="section-toc" href="#reader-toc">目录 ↑</a>
 <p>Brooks 定律针对已经延期、任务耦合且需要沟通的软件项目。新成员需要培训，工作必须重新切分，接口和协调路径增加，因此短期净产出可能下降。</p>
 <p>它不是“加人永远没用”的数学定律。工作可并行、接口稳定、成员熟悉领域且交付时间足够长时，加人可以提高产出。关键变量是可分解性、上手成本和沟通拓扑，而不是人数本身。</p>
-<h2 id="_5">核心论点二：概念一致性比功能堆积更重要</h2>
+<h2 id="_5" tabindex="-1">核心论点二：概念一致性比功能堆积更重要</h2><a class="section-toc" href="#reader-toc">目录 ↑</a>
 <p>用户更容易理解由少数统一观念构成的系统。作者以“外科手术队伍”和架构师权威支持统一设计，论据来自 OS/360 等大型项目经验。</p>
 <p>今天不必接受英雄式首席架构师模型，仍可保留目标：决策原则、接口和用户模型保持一致。跨职能团队、设计系统和架构决策记录可以用更分布式方式实现一致性。</p>
-<h2 id="_6">核心论点三：没有单项技术带来数量级的软件生产率跃升</h2>
+<h2 id="_6" tabindex="-1">核心论点三：没有单项技术带来数量级的软件生产率跃升</h2><a class="section-toc" href="#reader-toc">目录 ↑</a>
 <p>《没有银弹》区分本质复杂性与偶发复杂性：工具和语言能消除表示、构建等偶发困难，却无法消除需求中的概念关系、变化、不可见性和一致性约束。</p>
 <p>这是一项分类和预测性论证，不是说技术不会进步。云平台、开源组件、自动化测试和 AI 编程能显著压低某些成本，但问题定义、权衡和验证仍可能成为瓶颈。</p>
-<h2 id="_7">当代对照与不同观点</h2>
+<h2 id="_7" tabindex="-1">当代对照与不同观点</h2><a class="section-toc" href="#reader-toc">目录 ↑</a>
 <ul>
 <li>二十周年版保留早期文章并加入作者回顾，使读者能看到哪些主张被修正而非只读格言。<a href="https://cs.brown.edu/courses/cs190/2008/documents/mmm/preface20.pdf">二十周年版序言</a></li>
 <li>DORA 的长期研究显示，小批量、自动化和快速反馈与更好的软件交付表现相关。这些实践降低集成与协调成本，却没有让高度耦合任务自动可并行。<a href="https://dora.dev/research/">DORA Research</a></li>
 <li>开源和平台团队表明大型协作并非必然失败；有效做法通常是减少认知负担、稳定接口和限制跨团队同步，而不是单纯增加总人数。</li>
 </ul>
-<h2 id="_8">时效性判断</h2>
+<h2 id="_8" tabindex="-1">时效性判断</h2><a class="section-toc" href="#reader-toc">目录 ↑</a>
 <p>OS/360 的工具、组织背景和性别化比喻属于历史；沟通成本、第二系统效应、概念一致性和不可约复杂性仍很有解释力。最危险的读法是把标题格言脱离适用条件。</p>
-<h2 id="_9">读后行动</h2>
+<h2 id="_9" tabindex="-1">读后行动</h2><a class="section-toc" href="#reader-toc">目录 ↑</a>
 <ol>
 <li>对延期项目先画依赖和沟通图，再讨论加人。</li>
 <li>把工作切成能独立交付的小批量，测量上手与集成时间。</li>
 <li>为产品写一页概念模型，检查功能是否共享同一套语言和规则。</li>
 </ol>
-<h2 id="_10">最终评价</h2>
-<p>这本书的价值不是提供项目估算公式，而是打破“人月可互换”的管理直觉。它应与现代交付数据一起读，以机制而非格言指导决策。</p></article>
+<h2 id="_10" tabindex="-1">最终评价</h2><a class="section-toc" href="#reader-toc">目录 ↑</a>
+<p>这本书的价值不是提供项目估算公式，而是打破“人月可互换”的管理直觉。它应与现代交付数据一起读，以机制而非格言指导决策。</p>
+      <div class="reader-end"><a href="#reader-toc">↑ 返回目录</a><a href="../index.html">返回书架 →</a></div>
+    </article>
   </main>
 </div>
 <footer class="site-footer">
   <p>个人学习记录 · 明确区分作者主张、证据、外部观点与个人判断。笔记不替代原书。</p>
 </footer>
-<script src="../assets/site.js"></script>
+<script src="../assets/site.js?v=5bec0d2d7a20"></script>
 </body>
 </html>

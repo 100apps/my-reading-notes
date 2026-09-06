@@ -5,9 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="关于《幸福之路》的持续讨论与判断修订。">
   <title>《幸福之路》讨论记录｜我的读书笔记</title>
-  <link rel="stylesheet" href="../assets/style.css">
+  <link rel="stylesheet" href="../assets/style.css?v=5625cf599eef">
 </head>
 <body>
+<a class="skip-link" href="#main-content">跳到正文</a>
 <div id="progress" aria-hidden="true"></div>
 <header class="site-header">
   <a class="brand" href="../index.html">我的读书笔记</a>
@@ -18,25 +19,36 @@
     <button class="icon-button" type="button" data-theme-toggle>深浅色</button>
   </div>
 </header>
-<button class="icon-button menu-button" type="button" data-menu-toggle aria-label="打开目录" aria-expanded="false">目录</button>
 <div class="reader-shell">
   <aside class="reader-sidebar" aria-label="文档目录">
-    <p class="sidebar-label">讨论记录 · 幸福之路</p>
-    <p class="toc-title">阅读目录</p>
-    <nav id="toc"></nav>
+    <details class="reader-toc" id="reader-toc">
+      <summary><span>阅读目录</span><span class="toc-count">4 节</span></summary>
+      <div class="toc-content">
+        <p class="sidebar-label">讨论记录 · 幸福之路</p>
+        <nav id="toc" aria-label="章节导航"><ol><li><a href="#_2" class="level-2">第一次讨论：下载并阅读</a></li><li><a href="#_3" class="level-2">本次形成的核心判断</a></li><li><a href="#_4" class="level-2">第二次讨论：改善跨设备阅读体验</a></li><li><a href="#_5" class="level-2">后续可以继续讨论的问题</a></li></ol></nav>
+      </div>
+    </details>
   </aside>
-  <main class="reader-main">
+  <main class="reader-main" id="main-content" tabindex="-1">
+    <div class="reader-toolbar" aria-label="阅读工具">
+      <a class="quiet-link" href="../index.html">← 返回书架</a>
+      <div class="reading-settings" data-reading-settings hidden>
+        <button class="icon-button" type="button" data-font-decrease aria-label="减小正文字号">A−</button>
+        <output class="font-size-label" data-font-label aria-live="polite">18</output>
+        <button class="icon-button" type="button" data-font-increase aria-label="增大正文字号">A＋</button>
+      </div>
+    </div>
     <article class="paper"><h1 id="_1">《幸福之路》讨论记录</h1>
 <blockquote>
 <p>记录时间：2026-09-06</p>
 </blockquote>
-<h2 id="_2">第一次讨论：下载并阅读</h2>
+<h2 id="_2" tabindex="-1">第一次讨论：下载并阅读</h2><a class="section-toc" href="#reader-toc">目录 ↑</a>
 <p><strong>我：</strong></p>
 <p>罗素《幸福之路》下载下来读一下。</p>
 <p><strong>AI：</strong></p>
 <p>先核对了可合法获取的版本。Project Gutenberg 的英文原著 <em>The Conquest of Happiness</em> 标注为美国公版，因此把官方 TXT 和 EPUB 保存到仓库，并记录来源、大小、校验值和地域版权提醒。没有下载或公开仍受译者与出版社版权保护的中文译本。</p>
 <p>阅读时按序核对序言和全部 17 章，分别整理作者的中心问题、书内论据、因果链和结论；随后将书中主张与自我决定理论、社会关系、收入与幸福、失业与福祉、数字媒体与无聊、现代抑郁治疗指南进行对照。</p>
-<h2 id="_3">本次形成的核心判断</h2>
+<h2 id="_3" tabindex="-1">本次形成的核心判断</h2><a class="section-toc" href="#reader-toc">目录 ↑</a>
 <ul>
 <li>全书不是简单的“积极思考”，而是从自我沉溺转向外部联结的完整模型。</li>
 <li>罗素对竞争、比较、刺激依赖、反刍、互惠之爱和非功利兴趣的观察仍很敏锐。</li>
@@ -44,18 +56,25 @@
 <li>书内主要依靠经验、轶事和概念分析，实证强度有限；不能把相关性当成因果。</li>
 <li>外部条件、心理疾病、性别与家庭多样性需要用当代知识补正。</li>
 </ul>
-<h2 id="_4">后续可以继续讨论的问题</h2>
+<h2 id="_4" tabindex="-1">第二次讨论：改善跨设备阅读体验</h2><a class="section-toc" href="#reader-toc">目录 ↑</a>
+<p><strong>我：</strong></p>
+<p>这个网页要优化一下。header 不要固定，要能滚动，扩大阅读视野。菜单可以定在左侧，但是不要覆盖住内容。希望做一个响应式、跨设备兼容的框架，让任何一本书都能友好地展示。</p>
+<p><strong>AI：</strong></p>
+<p>截图中的遮挡来自平板断点下的浮动目录。共用阅读模板改为宽屏左侧独立列、窄屏页内折叠目录，页头随页面滚动；同时调整正文留白、长标题、表格和代码排版，增加字号调节、章节跳转焦点和静态目录，使全部书页与讨论页共享这些改进。</p>
+<h2 id="_5" tabindex="-1">后续可以继续讨论的问题</h2><a class="section-toc" href="#reader-toc">目录 ↑</a>
 <ul>
 <li>你的生活中，哪一场竞争已经从满足需要变成了维持排名？</li>
 <li>哪个无功利兴趣最可能成为职业之外的第二支点？</li>
 <li>你目前反复担忧的事情中，哪些有下一步行动，哪些只能暂时接受？</li>
 <li>罗素“幸福生活与善的生活趋于一致”的论证是否足够？</li>
-</ul><a class="discussion-link" href="../books/the-conquest-of-happiness.html">← 返回读书报告</a></article>
+</ul><a class="discussion-link" href="../books/the-conquest-of-happiness.html">← 返回读书报告</a>
+      <div class="reader-end"><a href="#reader-toc">↑ 返回目录</a><a href="../index.html">返回书架 →</a></div>
+    </article>
   </main>
 </div>
 <footer class="site-footer">
   <p>个人学习记录 · 明确区分作者主张、证据、外部观点与个人判断。笔记不替代原书。</p>
 </footer>
-<script src="../assets/site.js"></script>
+<script src="../assets/site.js?v=5bec0d2d7a20"></script>
 </body>
 </html>
