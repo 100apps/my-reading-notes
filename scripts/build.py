@@ -100,7 +100,7 @@ def render_index(config: dict) -> None:
     <h1>{html.escape(site['title'])}</h1>
     <p class="hero-copy">{html.escape(site['subtitle'])}。{html.escape(site['description'])}</p>
     <div class="stats" aria-label="书库统计">
-      <div class="stat"><strong>{len(books)}</strong><span>首批书目</span></div>
+      <div class="stat"><strong>{len(books)}</strong><span>收录书目</span></div>
       <div class="stat"><strong>{deep_count}</strong><span>深度报告</span></div>
       <div class="stat"><strong>{len(categories)}</strong><span>阅读方向</span></div>
     </div>
@@ -216,6 +216,13 @@ def render_sources(config: dict, source_catalog: dict) -> None:
             if reference
             else "待补充"
         )
+        repo_path = source.get("repo_path")
+        repo_link = (
+            '<br><a href="https://github.com/100apps/my-reading-notes/blob/main/'
+            f'{html.escape(repo_path, quote=True)}">仓库原文</a>'
+            if repo_path and source.get("redistributable")
+            else ""
+        )
         note = source.get("integrity_note", "")
         rows.append(
             "<tr>"
@@ -223,14 +230,15 @@ def render_sources(config: dict, source_catalog: dict) -> None:
             f"<td>{html.escape(source.get('local_filename') or '待补充')}</td>"
             f"<td>{html.escape(source.get('format', '—').upper())}<br>{size_label}<br>{pages} 页</td>"
             f"<td><code>{html.escape(digest)}</code></td>"
-            f"<td>{reference_link}{('<br><small>' + html.escape(note) + '</small>') if note else ''}</td>"
+            f"<td>{reference_link}{repo_link}{('<br><small>' + html.escape(note) + '</small>') if note else ''}</td>"
             "</tr>"
         )
     content = f"""<h1>来源与版权清单</h1>
 <p class="book-summary">{html.escape(source_catalog['policy'])}</p>
 <h2>为什么不把全部电子书放进公开仓库</h2>
 <p>公开读书笔记与再次分发整本受版权保护的电子书是两件事。本站公开自己的分析、讨论和合法来源；私人阅读副本仅保留在本地 <code>library/</code>，并用 SHA-256 确认版本。</p>
-<h2>首批来源记录</h2>
+<p>经核验属于公版或具有明确再分发许可的原文，可以连同来源和权利状态保存在仓库；仍受保护的版本只登记元数据，不公开文件。</p>
+<h2>来源记录</h2>
 <table>
   <thead><tr><th>书</th><th>本地文件名</th><th>格式/大小</th><th>SHA-256</th><th>公开参考</th></tr></thead>
   <tbody>{''.join(rows)}</tbody>

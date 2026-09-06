@@ -6,8 +6,8 @@
 
 ## 当前内容
 
-- 首批书单：20 本
-- 深度报告：《有效的单元测试》
+- 收录书目：21 本
+- 深度报告：《有效的单元测试》《幸福之路》
 - 其余书目：结构化初读报告，后续随实际阅读持续修订
 - 网站源码：`notes/`、`discussions/`、`data/books.json`
 - GitHub Pages 成品：`docs/`
@@ -19,6 +19,7 @@ data/books.json        书目、状态与首页摘要
 notes/                 每本书的 Markdown 笔记
 discussions/           我和 AI 的讨论记录
 sources/catalog.json   本地原文件的来源、格式、校验值
+sources/public-domain/ 核验为公版或可再分发的原文
 library/               本地电子书目录；默认不提交
 docs/                  构建后的 GitHub Pages 静态站点
 scripts/build.py       Markdown → HTML 构建器
@@ -50,5 +51,7 @@ python -m venv .venv
 ## 原文与版权
 
 公开仓库不再分发仍受版权保护的 PDF、EPUB、MOBI、AZW3 或全文文本。`sources/catalog.json` 只记录本地文件名、格式、大小和 SHA-256，便于确认自己的合法副本；公版或具有明确再分发许可的材料，可以在核验许可证后单独加入。
+
+《幸福之路》的英文原著来自 Project Gutenberg，标注为美国公版，因而同时保存 TXT 与 EPUB；仓库不收录现代中文译本。不同司法辖区的版权期限可能不同，使用者仍应核对当地法律。
 
 笔记为个人学习记录，不替代购买或阅读原书。

@@ -3,6 +3,7 @@
 
 from __future__ import annotations
 
+import hashlib
 import json
 import subprocess
 import sys
@@ -39,9 +40,33 @@ def main() -> None:
     tracked = subprocess.run(
         ["git", "ls-files"], cwd=ROOT, check=True, text=True, capture_output=True
     ).stdout.splitlines()
-    illegal = [path for path in tracked if Path(path).suffix.lower() in PROTECTED_EXTENSIONS]
+    approved_paths = {
+        source["repo_path"]
+        for source in SOURCES
+        if source.get("redistributable") and source.get("repo_path")
+    }
+    illegal = [
+        path
+        for path in tracked
+        if Path(path).suffix.lower() in PROTECTED_EXTENSIONS and path not in approved_paths
+    ]
     if illegal:
         fail("protected book files are tracked: " + ", ".join(illegal))
+
+    for source in SOURCES:
+        repo_path = source.get("repo_path")
+        if not repo_path:
+            continue
+        if not source.get("redistributable"):
+            fail(f"tracked source is not marked redistributable: {repo_path}")
+        path = ROOT / repo_path
+        if not path.is_file():
+            fail(f"missing redistributable source: {repo_path}")
+        if path.stat().st_size != source.get("bytes"):
+            fail(f"source size mismatch: {repo_path}")
+        digest = hashlib.sha256(path.read_bytes()).hexdigest()
+        if digest != source.get("sha256"):
+            fail(f"source checksum mismatch: {repo_path}")
 
     index = (ROOT / "docs" / "index.html").read_text(encoding="utf-8")
     if index.count('data-book-card') != len(BOOKS):

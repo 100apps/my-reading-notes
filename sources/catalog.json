@@ -1,6 +1,6 @@
 {
-  "policy": "受版权保护的本地原文件不进入公开仓库；本清单用于版本追踪和完整性校验。",
-  "generated_at": "2026-09-05",
+  "policy": "受版权保护的本地原文件不进入公开仓库；公版或具有明确再分发许可的原文可在标明来源与权利状态后收录。本清单用于版本追踪和完整性校验。",
+  "generated_at": "2026-09-06",
   "source_repository": "https://github.com/0voice/expert_readed_books",
   "files": [
     {
@@ -214,6 +214,28 @@
       "sha256": "4a28d38acf718d3544106f7851cbd9056cec7b8bfbe1e3b932dffc01f5418a0c",
       "redistributable": false,
       "public_reference": "https://books.google.com/books/about/A_Global_History.html?id=C6g7PQAACAAJ"
+    },
+    {
+      "slug": "the-conquest-of-happiness",
+      "local_filename": "the-conquest-of-happiness.txt",
+      "repo_path": "sources/public-domain/the-conquest-of-happiness/the-conquest-of-happiness.txt",
+      "format": "txt",
+      "bytes": 364018,
+      "sha256": "a74576a8977e02d186f05afe5752933c6088e26a8472cd7d6422a15b19531abc",
+      "redistributable": true,
+      "integrity_note": "Project Gutenberg eBook #77894；美国公版。其他司法辖区请自行核对当地版权期限。",
+      "public_reference": "https://www.gutenberg.org/ebooks/77894"
+    },
+    {
+      "slug": "the-conquest-of-happiness",
+      "local_filename": "the-conquest-of-happiness.epub",
+      "repo_path": "sources/public-domain/the-conquest-of-happiness/the-conquest-of-happiness.epub",
+      "format": "epub",
+      "bytes": 392475,
+      "sha256": "bb439e54db290a2b0ddf0391182622074ca14df112a712799959020241c94cbd",
+      "redistributable": true,
+      "integrity_note": "Project Gutenberg eBook #77894；美国公版。其他司法辖区请自行核对当地版权期限。",
+      "public_reference": "https://www.gutenberg.org/ebooks/77894"
     }
   ]
 }
