@@ -1,6 +1,6 @@
 {
   "policy": "受版权保护的本地原文件不进入公开仓库；公版或具有明确再分发许可的原文可在标明来源与权利状态后收录。本清单用于版本追踪和完整性校验。",
-  "generated_at": "2026-09-06",
+  "generated_at": "2026-09-13",
   "source_repository": "https://github.com/0voice/expert_readed_books",
   "files": [
     {
@@ -236,6 +236,18 @@
       "redistributable": true,
       "integrity_note": "Project Gutenberg eBook #77894；美国公版。其他司法辖区请自行核对当地版权期限。",
       "public_reference": "https://www.gutenberg.org/ebooks/77894"
+    },
+    {
+      "slug": "privacy-boundaries-not-silence",
+      "local_filename": "跟任何人说话都不要含有信息.pdf",
+      "format": "pdf",
+      "bytes": 21146783,
+      "pages": 135,
+      "sha256": "734f8a207f1cd1c1d7e4f4daff8dbd3bbf7520326c1889701b27632c4285407a",
+      "redistributable": false,
+      "source_type": "user-provided-private-copy",
+      "public_reference": null,
+      "integrity_note": "用户提供的私人 PDF，非初始书目仓库来源。前 4 页为图像目录，后 131 页带文本层；已顺序核读全部 10 章、60 个主题。文件内未见可核验的作者信息、版权页、出版社、ISBN 或参考文献表，正文反复出现“夏言说”及点赞提示。仅针对这份文件作分析，不认定其为正式出版物，也不认定署语为已核实作者；再分发许可未知，原文仅在本地保留。"
     }
   ]
 }
